@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/config_session.inc.php';
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,41 +34,66 @@ require_once 'includes/config_session.inc.php';
     include 'includes/headers/header_merchant.inc.php';
     ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <body>
     <div class="container-fluid pb-5">
         <div class="row">
             <nav class="col-md-2 d-md-block side-menu p-5" style="text-align:center">
                 <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
                 <hr class="my-3">
-                <a>Add Activity</a>
+                <a href="addactivity.php">Add Activity</a>
                 <a>Profile</a>
-                <a>History</a>
+                <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
                 <a>Recommendation</a>
+                <a>Education contents</a>
                     <!-- Add more links as needed -->
             </nav>
 
             <div class="col-md-8 pt-5">
-                <!-- <div class="h3 pb-4 pt-3"> My Products</div> -->
-                    <!-- <table class="table">
-                        <thead>
-                        <tr>
-                            <th style='text-align: center; font-weight: 600;'>Product Image</th>
-                            <th style='text-align: center; font-weight: 600;'>Product Name</th>
-                            <th style='text-align: center; font-weight: 600;'>Category</th>
-                            <th style='text-align: center; font-weight: 600;'>Location</th>
-                            <th style='text-align: center; font-weight: 600;'>Price</th>
-                            <th style='text-align: center; font-weight: 600;'>Description</th>
-                            <th style='text-align: center; font-weight: 600;'>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include 'includes/merchantDash/merchantDash.inc.php';
-                            ?>
-                        </tbody>
-                    </table>
-                    <a href="addProducts.php" class="btn btn-primary">Add New Product</a> -->
+                <h1>Dynamic dashboard</h1>
+                <canvas id="myPieChart" width="50" height="50"></canvas>
+
+                
+
+                
+                <script>
+
+                
+
+    
+
+                // Get the canvas element
+                var ctx = document.getElementById('myPieChart').getContext('2d');
+
+                // Data for the pie chart (example)
+                var data = {
+                labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'],
+                datasets: [{
+                data: [30, 20, 25, 15, 10], // Sample data
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#cfc8b8', '#bc9e82'] // Colors for each slice
+        }]
+    };
+
+    // Create the pie chart
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: {
+            aspectRatio: 2, // Control aspect ratio (e.g., 1 for a square chart)
+            responsive: true // Make the chart responsive
+        }
+    });
+
+    
+
+    
+</script>
+                
+</div>
+                            
+                        
             </div>
         </div>
     </div>
