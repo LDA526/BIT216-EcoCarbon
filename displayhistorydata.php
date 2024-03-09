@@ -122,9 +122,9 @@ $totalRating = $carbonData[0]['rating1'] + $carbonData[0]['rating2'] + $carbonDa
 
     <!-- Display message based on total rating -->
     <?php if ($totalRating > 10): ?>
-                    <h2>You're carbon footprints are way too high !</h2>
+                    <h2>Your carbon footprints are way too high !</h2>
                 <?php else: ?>
-                    <p>You're carbon footprints are average !</p>
+                    <p>Your carbon footprints are average !</p>
                 <?php endif; ?>
 
      <!-- Display Bar chart -->
@@ -133,38 +133,38 @@ $totalRating = $carbonData[0]['rating1'] + $carbonData[0]['rating2'] + $carbonDa
                 </div>
     
     <!-- Message for rating1 -->
-    <?php if ($carbonData[0]['rating1'] < 2): ?>
-        <div class="message">For your "Ques1" your rating is below average. Well done to make the earth a better place!.</div>
-    <?php elseif ($carbonData[0]['rating1'] > 3): ?>
-        <div class="message">For your "Ques1" your rating is above average. You should cut it down a bit!</div>
+    <?php if ($carbonData[0]['rating1'] <= 2): ?>
+        <div class="message">For your "Question 1 : Transportation" your rating is below average. Well done also you can pratice to use more public transport for travel to anywhere.</div>
+    <?php elseif ($carbonData[0]['rating1'] >= 3): ?>
+        <div class="message">For your "Question 1 : Transportation" your rating is above average. You should take public transport for travel purpose! In order to decrease your carboon footprints.</div>
     <?php endif; ?>
 
     <!-- Message for rating2 -->
-    <?php if ($carbonData[0]['rating2'] < 2): ?>
-        <div class="message">For your "Ques2" your rating is below average. Well done to make the earth a better place!.</div>
-    <?php elseif ($carbonData[0]['rating2'] > 3): ?>
-        <div class="message">For your "Ques2" your rating is above average. You should cut it down a bit!</div>
+    <?php if ($carbonData[0]['rating2'] <= 2): ?>
+        <div class="message">For your "Question 2 : Energy usage" your rating is below average. Well done and use less air-conditioner to lower the burden of Earth!.</div>
+    <?php elseif ($carbonData[0]['rating2'] >= 3): ?>
+        <div class="message">For your "Question 2 : Energy usage" your rating is above average. Instead of air-conditioner you can use fan or going to a public space that already had air-conditioner opened.</div>
     <?php endif; ?>
 
 <!-- Message for rating3 -->
-<?php if ($carbonData[0]['rating3'] < 2): ?>
-        <div class="message">For your "Ques3" your rating is below average. Well done to make the earth a better place!.</div>
-    <?php elseif ($carbonData[0]['rating3'] > 3): ?>
-        <div class="message">For your "Ques3" your rating is above average. You should cut it down a bit!</div>
+<?php if ($carbonData[0]['rating3'] <= 2): ?>
+        <div class="message">For your "Question 3 : Diet" your rating is below average. Well done and cook more for yourself it can be a more healthier and fun choice!</div>
+    <?php elseif ($carbonData[0]['rating3'] >= 3): ?>
+        <div class="message">For your "Question 3 : Diet" your rating is above average. You can try to look up for cooking videos on YouTube and cook for yourself to decrease your carbon footprints.</div>
     <?php endif; ?>
 
 <!-- Message for rating4 -->
-<?php if ($carbonData[0]['rating4'] < 2): ?>
-        <div class="message">For your "Ques4" your rating is below average. Well done to make the earth a better place!.</div>
-    <?php elseif ($carbonData[0]['rating4'] > 3): ?>
-        <div class="message">For your "Ques4" your rating is above average. You should cut it down a bit!</div>
+<?php if ($carbonData[0]['rating4'] <= 2): ?>
+        <div class="message">For your "Question 4 : Waste Managment" your rating is below average. Well done and compost more for a better environment!</div>
+    <?php elseif ($carbonData[0]['rating4'] >= 3): ?>
+        <div class="message">For your "Question 4 : Waste Managment" your rating is above average. You can try to order or cook lesser food to decrease food waste in your household!</div>
     <?php endif; ?>
 
 <!-- Message for rating5 -->
-<?php if ($carbonData[0]['rating5'] < 2): ?>
-        <div class="message">For your "Ques5" your rating is below average. Well done to make the earth a better place!.</div>
-    <?php elseif ($carbonData[0]['rating5'] > 3): ?>
-        <div class="message">For your "Ques5" your rating is above average. You should cut it down a bit!</div>
+<?php if ($carbonData[0]['rating5'] <= 2): ?>
+        <div class="message">For your "Question 5 : Miscellaneous" your rating is below average. Well done for supporting local farmers and energy-efficient goods to make Earth a better place.</div>
+    <?php elseif ($carbonData[0]['rating5'] >= 3): ?>
+        <div class="message">For your "Question 5 : Miscellaneous" your rating is above average. You can try out fresh local produce by local farmers and purchase energy-efficient goods!</div>
     <?php endif; ?>
 
     <style>
