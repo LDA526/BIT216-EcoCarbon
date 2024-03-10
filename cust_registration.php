@@ -65,8 +65,8 @@ require_once 'includes/config_session.inc.php';
             >
             <a
               class="nav-link btn btn-primary login-btn"
-              href="login.php"
-              style="font-weight: bold"
+              href="index.php"
+              style="font-weight: bold; background-color:#15790D;"
               >Login</a
             >
           </div>
