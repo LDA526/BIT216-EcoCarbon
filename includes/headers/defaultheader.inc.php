@@ -64,7 +64,7 @@
         >
         <a
           class="nav-link btn btn-primary login-btn"
-          href="login.php"
+          href="index.php"
           style="font-weight: bold"
           >Login</a
         >

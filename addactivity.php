@@ -41,7 +41,7 @@ $conn->close();
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Dashboard</title>
+        <title>Add activity</title>
         <link rel="icon" type="image/png" href="assets/logo.png" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,12 +90,9 @@ $conn->close();
             
 
             <div class="col-md-8 pt-5">
-                <h1>My dynamic dashboard</h1>
+                <h1>Submit your carbon data</h1>
                 <!-- Create a canvas element for the pie chart -->
-                <div id="chartContainer" style="width: 500px; height: 500px;">
-                <canvas id="dashPieChart"></canvas>
-                </div>
-                
+                <canvas id="dashPieChart" style="width: 200px; height: 200px;"></canvas>
                 <button id="addCDataBtn" class="btn btn-primary">Add Carbon Data</button>
 
                 <script>
@@ -106,7 +103,7 @@ $conn->close();
                 var totalRatings = <?php echo json_encode($totalRatings); ?>;
 
                 // Extract individual total rating values
-                var labels = ['Transportation', 'Energy usage', 'Diet', 'Waste Managment', 'Miscellaneous'];
+                var labels = Object.keys(totalRatings);
                 var values = Object.values(totalRatings);
 
 
@@ -144,9 +141,9 @@ $conn->close();
             }
         });
     
-    // Set the width and height of the div container
-document.getElementById('chartContainer').style.width = '500px';
-document.getElementById('chartContainer').style.height = '500px';
+    // Set the width and height of the canvas element
+    document.getElementById('dashPieChart').style.width = '50px';
+    document.getElementById('dashPieChart').style.height = '50px';
 
     // Function to redirect to another page
     function redirectToAnotherPage() {
