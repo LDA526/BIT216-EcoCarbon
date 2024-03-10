@@ -43,32 +43,41 @@ require_once 'includes/config_session.inc.php';
                 <a>Profile</a>
                 <a>History</a>
                 <a>Friends</a>
-                <a href = "Recomendation.php">Recommendation</a>
-                <a href = "AddContent.php">Edcucation Content</a>
+                <a href="Recomendation.php">Recommendation</a>
+                <a href="Educationcontent.php">Education content</a>
                     <!-- Add more links as needed -->
-            </nav>Recomendation.php
+            </nav>
 
             <div class="col-md-8 pt-5">
-                <!-- <div class="h3 pb-4 pt-3"> My Products</div> -->
-                    <!-- <table class="table">
-                        <thead>
-                        <tr>
-                            <th style='text-align: center; font-weight: 600;'>Product Image</th>
-                            <th style='text-align: center; font-weight: 600;'>Product Name</th>
-                            <th style='text-align: center; font-weight: 600;'>Category</th>
-                            <th style='text-align: center; font-weight: 600;'>Location</th>
-                            <th style='text-align: center; font-weight: 600;'>Price</th>
-                            <th style='text-align: center; font-weight: 600;'>Description</th>
-                            <th style='text-align: center; font-weight: 600;'>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include 'includes/merchantDash/merchantDash.inc.php';
-                            ?>
-                        </tbody>
-                    </table>
-                    <a href="addProducts.php" class="btn btn-primary">Add New Product</a> -->
+                    
+                      <form action="connect.php" method="post">
+                        <h2>Add Education Content</h2>
+
+                        <div class="mb-3">
+                          <label for="ulimage" class="form-label">Upload Image</label>
+                          <input type="file" class="form-control" id="ulimage" name="ulimage" accept="image/*">
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="ultitle" class="form-label">Title</label>
+                          <input type="text" class="form-control" id="ultitle" name="ultitle" placeholder="What's the title?" required>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="uldescription" class="form-label">Description</label>
+                          <input type="text" class="form-control" id="uldescription" name="uldescription" placeholder="Some description?" required>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="ulurl" class="form-label">Video URL</label>
+                          <input type="url" class="form-control" id="ulurl" name="ulurl" placeholder="Please upload the link here" >
+                        </div>
+
+                        <button type="reset" class="btn btn-primary">Reset</button><br>
+                        <a href = "AddContent.php"><button class="btn btn-primary">Cancel</button></a><br>
+                        <button type="submit" class="btn btn-primary" name="upload">Upload</button>
+                      </form>
+</div>
             </div>
         </div>
     </div>
@@ -85,3 +94,4 @@ require_once 'includes/config_session.inc.php';
 
 
 </html>
+
