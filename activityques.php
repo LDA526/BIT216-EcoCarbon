@@ -7,7 +7,7 @@ require_once 'includes/config_session.inc.php';
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Activity Questions</title>
+        <title>Daily Activity Update</title>
         <link rel="icon" type="image/png" href="assets/logo.png" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -168,7 +168,9 @@ require_once 'includes/config_session.inc.php';
                 <br>
                 <br>
 
-                <button type="submit" class="btn btn-warning" style="background-color: #426B1F; color: #ffffff;">Submit</button>
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-warning" style="background-color: #426B1F; color: #ffffff;">Submit</button>
+                </div>
           
             </div>
             </form>
