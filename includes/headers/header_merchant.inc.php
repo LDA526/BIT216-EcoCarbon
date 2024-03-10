@@ -2,12 +2,12 @@
 <header class="sticky-top">
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a href="dashboard.php" class="navbar-brand fw-bold"> <img src="assets/logo.png" alt="...">Travurr
+    <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
     </a>
     <div class="nav-search-container">
     <form class="nav-search" role="search" method="post" action="search_page.php">
         <div class="input-group">
-          <input
+          <!-- <input
             class="form-control"
             name="search"
             type="search"
@@ -21,7 +21,7 @@
             name="submit"
           >
             Search
-          </button>
+          </button> -->
         </div>
       </form>
     </div>
