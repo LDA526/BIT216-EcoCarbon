@@ -34,7 +34,7 @@ require_once 'includes/config_session.inc.php';
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
+        <a href="#" class="navbar-brand fw-bold">EcoCarbon
         </a>
         <button
           class="navbar-toggler"

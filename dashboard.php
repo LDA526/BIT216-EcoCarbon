@@ -85,10 +85,6 @@ $conn->close();
                 <a>Education Content</a>
                     <!-- Add more links as needed -->
             </nav>
-              
-    
-            
-            
 
             <div class="col-md-8 pt-5">
                 <h1>My dynamic dashboard</h1>
@@ -96,8 +92,9 @@ $conn->close();
                 <div id="chartContainer" style="width: 500px; height: 500px;">
                 <canvas id="dashPieChart"></canvas>
                 </div>
-                
-                <button id="addCDataBtn" class="btn btn-primary">Add Carbon Data</button>
+                <div class="col-md-4 p-5">
+                    <button id="addCDataBtn" class="btn btn-primary"  style="background-color:#15790D">Add Carbon Data</button>
+                </div>
 
                 <script>
                 // Get the canvas element
