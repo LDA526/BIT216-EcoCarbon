@@ -105,7 +105,7 @@ $conn->close();
                     </div>
                 </div>
                 <br>
-                <div class="row g-0">
+                <div class="col-md-8">
                     <div class="row g-0">
                         <h3 style="letter-spacing: 1px">
                             New Password:
@@ -121,10 +121,9 @@ $conn->close();
                         </h4>
 
                         <div class="align-items-center">
-                            <button class="btn btn-danger" href="changepassword.php">Change Password</button>
+                            <button class="btn btn-danger" href="changepassword.php" style="background-color:#15790D">Change Password</button>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
