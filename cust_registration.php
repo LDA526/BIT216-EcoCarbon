@@ -87,7 +87,7 @@ require_once 'includes/config_session.inc.php';
     </nav>
   </header>
   <body>
-  <div class="page-body">
+  <div class="page-body" style="background: #393f81;">
     <div class="container py-5" style="height: 90%">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8">
@@ -97,7 +97,7 @@ require_once 'includes/config_session.inc.php';
                   <form action="includes/custsignup/custsignup.inc.php" method="post" id="registerForm" class="pt-3 needs-validation was-validated"
                   novalidate="" enctype="multipart/form-data">
                     <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
-                      Customer Registration
+                      Registration
                     </h3>
 
                     <?php
@@ -121,13 +121,7 @@ require_once 'includes/config_session.inc.php';
                       <div class="col">
                         <p class="mb-5 pb-lg-2" style="color: #393f81">
                           Already have an account?
-                          <a href="login.php" style="color: #393f81">Sign In</a>
-                        </p>
-                      </div>
-                      <div class="col">
-                        <p class="mb-5 pb-lg-2" style="color: #393f81">
-                          Looking to be a Seller?
-                          <a href="merch_registration.php" style="color: #393f81">Click Here</a>
+                          <a href="index.php" style="color: #393f81">Sign In</a>
                         </p>
                       </div>
                     </div>
