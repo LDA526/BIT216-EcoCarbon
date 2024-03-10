@@ -34,9 +34,8 @@ require_once 'includes/config_session.inc.php';
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="index.php" class="navbar-brand fw-bold"> <img src="assets/logo.png" alt="...">Travurr
+        <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
         </a>
-        <h2>Log In</h2>
         <button
           class="navbar-toggler"
           type="button"

@@ -124,8 +124,56 @@ INSERT INTO `user` (`userID`, `username`, `pwd`, `gender`, `email`, `contactno`,
 (1, 'Passport', '123', 'male', 'PassportPioneer@gmail.com', 123453232, 0),
 (2, 'Journey', '123', 'female', 'JourneyQuester@gmail.com', 12789657, 0),
 (3, 'Vagabond', '123', 'female', 'VagabondVentures@gmail.com', 125678542, 1);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activity_responses`
+--
+ALTER TABLE `activity_responses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activity_responses`
+--
+ALTER TABLE `activity_responses`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uploadcontent`
+--
+
+CREATE TABLE `uploadcontent` (
+  `Image` varchar(250) NOT NULL,
+  `Title` varchar(50) NOT NULL,
+  `Description` varchar(500) NOT NULL,
+  `URL` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `uploadcontent` (`Image`, `Title`, `Description`, `URL`) VALUES
+('屏幕截图 2024-03-08 202801.png', 'test1', 'this is the first test and post the image file it\'s successfully?', ''),
+('屏幕截图 2024-03-08 202801.png', 'test2', 'this is the second test and post the image file and the website address it\'s successfully?', 'https://www.w3schools.com/html/html_links.asp');
+
+COMMIT;
