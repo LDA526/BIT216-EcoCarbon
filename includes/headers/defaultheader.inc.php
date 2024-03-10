@@ -46,18 +46,6 @@
         >
         <a
           class="nav-link"
-          href="about.php"
-          >About Us</a>
-          <a
-          class="nav-link"
-          href="contact.php"
-          >Contact Us</a>
-          <a
-          class="nav-link"
-          href="faq.php"
-          >FAQ</a>
-        <a
-          class="nav-link"
           href="cust_registration.php"
           style="font-weight: bold"
           >Sign Up</a
