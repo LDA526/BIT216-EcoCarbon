@@ -93,7 +93,7 @@ include 'includes/headers/header_merchant.inc.php';
             <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
             <hr class="my-3">
             <a href="addactivity.php">Add Activity</a>
-            <a>Profile</a>
+            <a href="profile.php">Profile</a>
             <a href="searchhistory.php">History</a>
             <a>Friends</a>
             <a>Recommendation</a>

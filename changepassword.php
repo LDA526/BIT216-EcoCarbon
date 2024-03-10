@@ -34,7 +34,10 @@ if (isset($_GET) && !empty($_GET)) {
     $stmt->bind_param("ss", $pwd, $_SESSION["user_username"]);
     $stmt->execute();
 
-    echo "<script type='text/javascript'>alert('Password updated!');</script>";
+    echo "<script type='text/javascript'>
+            alert('Password updated!');
+            window.location = 'profile.php';
+        </script>";
 }
 
 // Close the database connection
