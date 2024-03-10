@@ -8,7 +8,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once '../config_session.inc.php';
     
     $username = $_POST["username"];
-    $fullname = $_POST["fullname"];
     $email = $_POST["email"];
     $contactno = $_POST["contactno"];
     $commute = $_POST["commute"];
@@ -20,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     // if(!is_contactno_valid($contactno)) {
     //     $errors["invalid_number"] = "Contact Number must be numbers!";
     // }
-    if(is_input_empty($username, $fullname, $email, $contactno, $commute, $energy, $diet)) {
+    if(is_input_empty($username, $email, $contactno, $commute, $energy, $diet)) {
         $errors["empty_input"] = "Fill in all fields!";
     }
     if(is_email_invalid($email)) {

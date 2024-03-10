@@ -29,31 +29,6 @@ function signup_inputs() {
             </div>';
     }
 
-    if (isset($_SESSION["signup_data"]["fullname"])) {
-        echo '<div class="form-floating mb-4">
-                <input
-                    type="text"
-                    name="fullname"
-                    class="form-control form-control-lg"
-                    placeholder="John Doe"
-                    required
-                    value= "' . $_SESSION["signup_data"]["fullname"] . '"
-                />
-                <label for="formFullName">Full Name</label>
-            </div>';
-    } else {
-        echo '<div class="form-floating mb-4">
-                <input
-                    type="text"
-                    name="fullname"
-                    class="form-control form-control-lg"
-                    placeholder="John Doe"
-                    required
-                />
-                <label for="formFullName">Full Name</label>
-            </div>';
-    }
-
     if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["error_signup"]["invalid_email"]) && !isset($_SESSION["error_signup"]["taken_email"])) {
         echo '<div class="form-floating mb-4">
                 <input

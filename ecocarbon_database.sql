@@ -28,27 +28,29 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activity_responses` (
+  `id` int(50) NOT NULL,
+  `user_id` int(50) NOT NULL,
   `activity_date` date NOT NULL,
   `rating1` varchar(50) NOT NULL,
   `rating2` varchar(50) NOT NULL,
   `rating3` varchar(50) NOT NULL,
   `rating4` varchar(50) NOT NULL,
   `rating5` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `activity_responses`
 --
 
-INSERT INTO `activity_responses` (`activity_date`, `rating1`, `rating2`, `rating3`, `rating4`, `rating5`) VALUES
-('2024-03-08', '1', '1', '1', '1', '1'),
-('2024-03-08', '2', '1', '1', '1', '1'),
-('2024-03-08', '3', '1', '1', '1', '1'),
-('2024-03-08', '4', '1', '1', '1', '1'),
-('2024-03-08', '5', '1', '1', '1', '1'),
-('2024-02-02', '2', '4', '1', '1', '1'),
-('2024-02-03', '4', '4', '1', '1', '1'),
-('2024-03-09', '4', '3', '2', '5', '3');
+INSERT INTO `activity_responses` (`id`, `user_id`, `activity_date`, `rating1`, `rating2`, `rating3`, `rating4`, `rating5`) VALUES
+(1, 1, '2024-03-01', '1', '1', '1', '1', '1'),
+(2, 1, '2024-03-04', '2', '1', '1', '1', '1'),
+(3, 1, '2024-03-05', '3', '1', '1', '1', '1'),
+(4, 2, '2024-03-06', '4', '1', '1', '1', '1'),
+(5, 1, '2024-03-08', '5', '1', '1', '1', '1'),
+(6, 2, '2024-02-02', '2', '4', '1', '1', '1'),
+(7, 1, '2024-02-03', '4', '4', '1', '1', '1'),
+(8, 1, '2024-03-09', '5', '3', '2', '5', '3');
 
 -- --------------------------------------------------------
 
@@ -107,24 +109,25 @@ INSERT INTO `updates` (`userID`, `date`, `category`, `value`) VALUES
 --
 
 CREATE TABLE `user` (
-  `userID` int(5) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `pwd` varchar(30) DEFAULT NULL,
-  `gender` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `contactno` int(11) NOT NULL,
+  `contactno` varchar(50) NOT NULL,
+  `commute` varchar(50) NOT NULL,
+  `energy` varchar(50) NOT NULL,
+  `diet` varchar(50) NOT NULL,
   `admin` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `username`, `pwd`, `gender`, `email`, `contactno`, `admin`) VALUES
-(1, 'Passport', '123', 'male', 'PassportPioneer@gmail.com', 123453232, 0),
-(2, 'Journey', '123', 'female', 'JourneyQuester@gmail.com', 12789657, 0),
-(3, 'Vagabond', '123', 'female', 'VagabondVentures@gmail.com', 125678542, 1);
-
+INSERT INTO `user` (`id`, `username`, `pwd`, `email`, `contactno`, `commute`, `energy`, `diet`, `admin`) VALUES
+(1, 'Passport', '123', 'PassportPioneer@gmail.com', '123453232', '', '', '', 0),
+(2, 'Journey', '123', 'JourneyQuester@gmail.com', '12789657', '', '', '', 0),
+(3, 'Vagabond', '123', 'VagabondVentures@gmail.com', '125678542', '', '', '', 1),
 
 --
 -- Indexes for dumped tables
