@@ -151,6 +151,7 @@ include 'includes/headers/header_merchant.inc.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    <button>Recommendation</button>
 </div>
 
 
