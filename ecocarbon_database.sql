@@ -127,7 +127,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `pwd`, `email`, `contactno`, `commute`, `energy`, `diet`, `admin`) VALUES
 (1, 'Passport', '123', 'PassportPioneer@gmail.com', '123453232', '', '', '', 0),
 (2, 'Journey', '123', 'JourneyQuester@gmail.com', '12789657', '', '', '', 0),
-(3, 'Vagabond', '123', 'VagabondVentures@gmail.com', '125678542', '', '', '', 1),
+(3, 'Vagabond', '123', 'VagabondVentures@gmail.com', '125678542', '', '', '', 1);
 
 --
 -- Indexes for dumped tables
