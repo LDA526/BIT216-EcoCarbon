@@ -2,11 +2,11 @@
 <header class="sticky-top">
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a href="index.php" class="navbar-brand fw-bold"> <img src="assets/logo.png" alt="...">Travurr
+    <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
     </a>
     <div class="nav-search-container">
       <form class="nav-search" role="search" method="post" action="search_page.php">
-        <div class="input-group">
+        <!-- <div class="input-group">
           <input
             class="form-control"
             name="search"
@@ -22,7 +22,7 @@
           >
             Search
           </button>
-        </div>
+        </div> -->
       </form>
     </div>
     <button
@@ -53,7 +53,7 @@
         <a
           class="nav-link btn btn-primary login-btn"
           href="index.php"
-          style="font-weight: bold"
+          style="font-weight: bold; background-color:#15790D;"
           >Login</a
         >
       </div>

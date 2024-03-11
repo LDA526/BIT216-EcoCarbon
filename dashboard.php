@@ -41,7 +41,7 @@ $conn->close();
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Global Dynamic Dashboard</title>
+        <title>Dashboard</title>
         <link rel="icon" type="image/png" href="assets/logo.png" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -81,9 +81,8 @@ $conn->close();
                 <a href="profile.php">Profile</a>
                 <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
-
-                <a href = "Recomendation.php">Recommendation</a>
-                <a href = "AddContent.php">Edcucation Content</a>
+                <a href = "Recommendation.php">Recommendation</a>
+                <a>Education Content</a>
                     <!-- Add more links as needed -->
             </nav>
               
@@ -92,7 +91,7 @@ $conn->close();
             
 
             <div class="col-md-8 pt-5">
-                <h1>Global Dynamic Dashboard</h1>
+                <h1>My dynamic dashboard</h1>
                 <!-- Create a canvas element for the pie chart -->
                 <div id="chartContainer" style="width: 500px; height: 500px;">
                 <canvas id="dashPieChart"></canvas>

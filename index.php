@@ -64,7 +64,7 @@ require_once 'includes/config_session.inc.php';
             <a
               class="nav-link btn btn-primary login-btn"
               href="index.php"
-              style="font-weight: bold"
+              style="font-weight: bold; background-color:#15790D;"
               >Login</a
             >
           </div>
@@ -119,7 +119,7 @@ require_once 'includes/config_session.inc.php';
                     <div class="pt-1 mb-4">
                       <button
                         class="btn btn-primary btn-lg btn-block"
-                        style="background-color: #7c4dff;"
+                        style="background-color: #15790D;"
                         type="submit"
                       >
                         Login
@@ -128,7 +128,7 @@ require_once 'includes/config_session.inc.php';
 
                     <p class="mb-5 pb-lg-2" style="color: #393f81">
                       Don't have an account?
-                      <a href="cust_registration.php" style="color: #393f81">Sign Up</a>
+                      <a href="cust_registration.php" style="color: #15790D">Sign Up</a>
                     </p>
                   </form>
                 </div>
