@@ -133,7 +133,7 @@ $conn->close();
                             <h5 class="fw-normal pb-3" style="letter-spacing: 1px; margin-right: 100px;">
                                 <?php 
                                     if ($user["commute"] == "personal") echo "Personal Vehicle";
-                                    else if (user["commute"] == "public") echo "Public Transport";
+                                    else if ($user["commute"] == "public") echo "Public Transport";
                                     else echo "Walking"; 
                                 ?>
                             </h5>

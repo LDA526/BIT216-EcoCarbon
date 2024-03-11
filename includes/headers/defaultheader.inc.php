@@ -2,7 +2,7 @@
 <header class="sticky-top">
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
+    <a href="dashboard.php" class="navbar-brand fw-bold">EcoCarbon
     </a>
     <div class="nav-search-container">
       <form class="nav-search" role="search" method="post" action="search_page.php">

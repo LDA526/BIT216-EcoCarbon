@@ -110,11 +110,11 @@ require_once 'includes/config_session.inc.php';
                       <label for="formPassword">Password</label>
                     </div>
 
-                    <div class="input-group mb-3 justify-content-between">
+                    <!-- <div class="input-group mb-3 justify-content-between">
                       <div class="forgot">
                         <a href="#">Forgot Password?</a>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="pt-1 mb-4">
                       <button
