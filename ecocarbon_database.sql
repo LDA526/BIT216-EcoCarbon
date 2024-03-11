@@ -129,6 +129,7 @@ INSERT INTO `user` (`id`, `username`, `pwd`, `email`, `contactno`, `commute`, `e
 (2, 'Journey', '123', 'JourneyQuester@gmail.com', '12789657', '', '', '', 0),
 (3, 'Vagabond', '123', 'VagabondVentures@gmail.com', '125678542', '', '', '', 1);
 
+
 --
 -- Indexes for table `activity_responses`
 --
