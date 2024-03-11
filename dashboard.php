@@ -97,7 +97,9 @@ $conn->close();
                 <canvas id="dashPieChart"></canvas>
                 </div>
                 
-                <button id="addCDataBtn" class="btn btn-primary">Add Carbon Data</button>
+                <div class="col-md-8 pt-5">
+                    <button id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;">Add Carbon Data</button>
+                </div>
 
                 <script>
                 // Get the canvas element
