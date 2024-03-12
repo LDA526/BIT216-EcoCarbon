@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch rating data from the database
+// Fetch rating data from the database for pie chart
 $sql = "SELECT SUM(rating1) AS total_rating1, SUM(rating2) AS total_rating2, SUM(rating3) AS total_rating3, SUM(rating4) AS total_rating4, SUM(rating5) AS total_rating5 FROM activity_responses";
 $result = $conn->query($sql);
 
@@ -30,6 +30,24 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
+
+// Fetch data from the database for the line chart
+$sqlLine = "SELECT activity_date, rating1, rating2, rating3, rating4, rating5 FROM activity_responses";
+$resultLine = $conn->query($sqlLine);
+
+// Initialize arrays to store fetched data for the line chart
+$datesLine = [];
+$ratingsLine = [];
+
+// Fetch data from the result set for the line chart
+if ($resultLine->num_rows > 0) {
+    while ($row = $resultLine->fetch_assoc()) {
+        $datesLine[] = $row['activity_date'];
+        $ratingsLine[] = [$row['rating1'], $row['rating2'], $row['rating3'], $row['rating4'], $row['rating5']];
+    }
+}
+
+
 
 // Close the database connection
 $conn->close();
@@ -90,17 +108,28 @@ $conn->close();
             
             
 
-            <div class="col-md-8 pt-5">
-                <h1>My dynamic dashboard</h1>
-                <!-- Create a canvas element for the pie chart -->
-                <div id="chartContainer" style="width: 500px; height: 500px;">
-                <canvas id="dashPieChart"></canvas>
-                </div>
-                
-                <div class="col-md-8 pt-5">
+            <body>
+                <div class="col p-5">
+                    <h1>My dynamic dashboard</h1>               
+                    <br><br>
+                    <!-- Create a canvas element for the pie chart -->
+                    <div id="chartContainer" style="width: 500px; height: 500px;">
+                        <canvas id="dashPieChart"></canvas>
+                    </div>
+                    <br>
                     <button id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;">Add Carbon Data</button>
                 </div>
-
+                <div class="col p-5">
+                    <!-- Create a canvas element for the line chart -->
+                    <div id="chartContainerBar" style="width: 900px; height: 600px;">
+                    <canvas id="dashBarChart"></canvas>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </body>
+                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script>
                 // Get the canvas element
                 var ctx = document.getElementById('dashPieChart').getContext('2d');
@@ -109,7 +138,7 @@ $conn->close();
                 var totalRatings = <?php echo json_encode($totalRatings); ?>;
 
                 // Extract individual total rating values
-                var labels = ['Transportation', 'Energy usage', 'Diet', 'Waste Managment', 'Miscellaneous'];
+                var labels = ['Transportation', 'Energy Usage', 'Diet', 'Waste Managment', 'Miscellaneous'];
                 var values = Object.values(totalRatings);
 
 
@@ -146,23 +175,62 @@ $conn->close();
                 // Add any other chart options here
             }
         });
-    
-    // Set the width and height of the div container
-document.getElementById('chartContainer').style.width = '500px';
-document.getElementById('chartContainer').style.height = '500px';
+        
+    // Data for the bar chart
+    var dataBar = {
+                    labels: <?php echo json_encode($datesLine); ?>,
+                    datasets: [
+                        <?php for($i = 0; $i < count($ratingsLine[0]); $i++) { ?>
+                        {
+                            label: 'Rating <?php echo $i + 1; ?>',
+                            data: <?php echo json_encode(array_column($ratingsLine, $i)); ?>,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        },
+                        <?php } ?>
+                    ]
+                };
+                // Create the bar chart
+                var ctxBar = document.getElementById('dashBarChart').getContext('2d');
+                var dashBarChart = new Chart(ctxBar, {
+                    type: 'bar',
+                    data: dataBar,
+                    options: {
+                        responsive: true,
+                        aspectRatio: 1,
+                        // Add any other chart options here
+                    }
+                });
 
-    // Function to redirect to another page
-    function redirectToAnotherPage() {
-    window.location.href = 'activityques.php'; 
+                // Set the width and height of the div containers
+                document.getElementById('chartContainerBar').style.width = '900px';
+                document.getElementById('chartContainerBar').style.height = '600px';
+
+                document.getElementById('chartContainerPie').style.width = '500px';
+                document.getElementById('chartContainerPie').style.height = '500px';
+    
+                // Set the width and height of the div container
+                document.getElementById('chartContainer').style.width = '900px';
+                document.getElementById('chartContainer').style.height = '700px';
+
+                // Function to redirect to another page
+                function redirectToAnotherPage() {
+                window.location.href = 'activityques.php'; 
 }
     
     // Function to update chart data
     function updateCData() {
-    // Example: Update chart data
-    dashPieChart.data.datasets[0].data = [10, 20, 30, 40, 50];
-    // Update chart
-    dashPieChart.update();
-    }
+                    // Example: Update chart data for the pie chart
+                    dashPieChart.data.datasets[0].data = [10, 20, 30, 40, 50];
+                    // Example: Update chart data for the bar chart
+                    dashBarChart.data.datasets.forEach((dataset) => {
+                        dataset.data = [10, 20, 30, 40, 50];
+                    });
+                    // Update charts
+                    dashPieChart.update();
+                    dashBarChart.update();
+                }
 
     // Add event listener to the button
     document.getElementById('addCDataBtn').addEventListener('click', function() {
