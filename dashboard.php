@@ -82,8 +82,8 @@ $conn->close();
                 <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
 
-                <a href = "Recomendation.php">Recommendation</a>
-                <a href = "AddContent.php">Edcucation Content</a>
+                <a href = "recommendation.php">Recommendation</a>
+                <a href = "addcontent.php">Edcucation Content</a>
                     <!-- Add more links as needed -->
             </nav>
               

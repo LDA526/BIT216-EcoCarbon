@@ -43,8 +43,8 @@ require_once 'includes/config_session.inc.php';
                 <a>Profile</a>
                 <a>History</a>
                 <a>Friends</a>
-                <a href = "test.php">Recommendation</a>
-                <a href = "AddContent.php">Edcucation Content</a>
+                <a href = "recommendation.php">Recommendation</a>
+                <a href = "educationalcontent.php">Edcucation Content</a>
                     <!-- Add more links as needed -->
             </nav>
 
@@ -68,7 +68,7 @@ require_once 'includes/config_session.inc.php';
                             ?>
                         </tbody>
                     </table>
-                    <a href="addProducts.php" class="btn btn-primary">Add New Product</a> -->
+                     -->
                     
                     <div class="education-content-block">
                 <h1>Education content about the Eco carbon</h1>
