@@ -1,5 +1,36 @@
 <?php
 require_once 'includes/config_session.inc.php';
+
+// Create connecton
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ecocarbon_database";
+$conn = mysqli_connect ($servername,$username,$password,$dbname);
+
+// Check connection 
+if ($conn->connect_error){
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// Prepare and excute the query
+$query = "SELECT * FROM user WHERE username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s",$_SESSION["user_username"]);
+$stmt->execute();
+
+// Fetch the result
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+if ($user && $user["admin"] == 1) {
+  header("Location: addcontent.php"); // 重定向到管理员页面
+  exit();
+} else {
+  header("Location: educationalcontent.php"); // 重定向到普通用户页面
+  exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -90,6 +121,12 @@ require_once 'includes/config_session.inc.php';
                     </p>
                   </span>
                 </div>
+                
+                <?php if ($user && $user["admin"] == 1) : ?>
+                    <a href="addcontent.php" class="btn btn-primary">Add Content Here!</a>
+                <?php else: ?>
+                    <p>You are not an admin and are not allowed to edit content.</p>
+                <?php endif; ?>
 
                 <div class="education-content-webaddress">
                   <h5>More Infomation please click the picture</h5>
