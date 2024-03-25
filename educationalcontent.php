@@ -25,10 +25,6 @@ $user = $result->fetch_assoc();
 
 if ($user && $user["admin"] == 1) {
   header("Location: addcontent.php"); // 重定向到管理员页面
-  exit();
-} else {
-  header("Location: educationalcontent.php"); // 重定向到普通用户页面
-  exit();
 }
 
 ?>
@@ -122,11 +118,11 @@ if ($user && $user["admin"] == 1) {
                   </span>
                 </div>
                 
-                <?php if ($user && $user["admin"] == 1) : ?>
-                    <a href="addcontent.php" class="btn btn-primary">Add Content Here!</a>
-                <?php else: ?>
-                    <p>You are not an admin and are not allowed to edit content.</p>
-                <?php endif; ?>
+                <?php if ($user && $user["admin"] == 1) : 
+                    echo "<a href=\"addcontent.php\" class=\"btn btn-primary\">Add Content Here!</a>";
+                else :
+                    echo "<p>You are not an admin and are not allowed to edit content.</p>";
+                ?>
 
                 <div class="education-content-webaddress">
                   <h5>More Infomation please click the picture</h5>
