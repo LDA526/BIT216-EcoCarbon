@@ -179,7 +179,7 @@ $totalRating = $carbonData[0]['rating1'] + $carbonData[0]['rating2'] + $carbonDa
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'],
+            labels: ['Transportation', 'Energy Usage', 'Diet', 'Waste Managment', 'Miscellaneous'],
             datasets: [{
                 label: 'Rating',
                 data: [
