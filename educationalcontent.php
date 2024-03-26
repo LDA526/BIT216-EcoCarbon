@@ -23,9 +23,9 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if ($user && $user["admin"] == 1) {
+/*if ($user && $user["admin"] == 1) {
   header("Location: addcontent.php"); // 重定向到管理员页面
-}
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -118,9 +118,9 @@ if ($user && $user["admin"] == 1) {
                   </span>
                 </div>
                 
-                <?php if ($user && $user["admin"] == 1) : 
+                <?php if ($user && $user["admin"] == 1)
                     echo "<a href=\"addcontent.php\" class=\"btn btn-primary\">Add Content Here!</a>";
-                else :
+                else
                     echo "<p>You are not an admin and are not allowed to edit content.</p>";
                 ?>
 

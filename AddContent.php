@@ -50,7 +50,7 @@ require_once 'includes/config_session.inc.php';
 
             <div class="col-md-8 pt-5">
                     
-                      <form action="connect.php" method="post">
+                      <form action="connect.php" method="post" enctype="multipart/form-data">
                         <h2>Add Education Content</h2>
 
                         <div class="mb-3">
@@ -74,11 +74,11 @@ require_once 'includes/config_session.inc.php';
                         </div>
 
                         <button type="reset" class="btn btn-primary">Reset</button><br>
-                        <a href = "AddContent.php"><button class="btn btn-primary">Cancel</button></a><br>
+
                         <button type="submit" class="btn btn-primary" name="upload">Upload</button>
                       </form>
-</div>
             </div>
+          </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
