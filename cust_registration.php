@@ -35,7 +35,7 @@ require_once 'includes/config_session.inc.php';
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="index.php" class="navbar-brand fw-bold"> <img src="assets/logo.png" alt="...">Travurr
+        <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
         </a>
         <h2>Sign Up</h2>
         <button
@@ -58,18 +58,6 @@ require_once 'includes/config_session.inc.php';
               >Home</a
             >
             <a
-              class="nav-link"
-              href="about.php"
-              >About Us</a>
-              <a
-              class="nav-link"
-              href="contact.php"
-              >Contact Us</a>
-              <a
-              class="nav-link"
-              href="faq.php"
-              >FAQ</a>
-            <a
               class="nav-link active"
               href="registration.php"
               style="font-weight: bold"
@@ -77,8 +65,8 @@ require_once 'includes/config_session.inc.php';
             >
             <a
               class="nav-link btn btn-primary login-btn"
-              href="login.php"
-              style="font-weight: bold"
+              href="index.php"
+              style="font-weight: bold; background-color:#15790D;"
               >Login</a
             >
           </div>
@@ -87,7 +75,7 @@ require_once 'includes/config_session.inc.php';
     </nav>
   </header>
   <body>
-  <div class="page-body">
+  <div class="page-body" style="background: #15790D">
     <div class="container py-5" style="height: 90%">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8">
@@ -97,7 +85,7 @@ require_once 'includes/config_session.inc.php';
                   <form action="includes/custsignup/custsignup.inc.php" method="post" id="registerForm" class="pt-3 needs-validation was-validated"
                   novalidate="" enctype="multipart/form-data">
                     <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
-                      Customer Registration
+                      Registration
                     </h3>
 
                     <?php
@@ -109,7 +97,7 @@ require_once 'includes/config_session.inc.php';
                     <div class="pt-1 mb-4">
                       <button
                         class="btn btn-primary btn-lg btn-block"
-                        style="background-color: #7c4dff;"
+                        style="background-color: #15790D;"
                         name="submit"
                         type="submit"
                       >
@@ -121,13 +109,7 @@ require_once 'includes/config_session.inc.php';
                       <div class="col">
                         <p class="mb-5 pb-lg-2" style="color: #393f81">
                           Already have an account?
-                          <a href="login.php" style="color: #393f81">Sign In</a>
-                        </p>
-                      </div>
-                      <div class="col">
-                        <p class="mb-5 pb-lg-2" style="color: #393f81">
-                          Looking to be a Seller?
-                          <a href="merch_registration.php" style="color: #393f81">Click Here</a>
+                          <a href="index.php" style="color: #393f81">Sign In</a>
                         </p>
                       </div>
                     </div>

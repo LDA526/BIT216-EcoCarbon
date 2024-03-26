@@ -95,23 +95,29 @@ $conn->close();
             <nav class="col-md-2 d-md-block side-menu p-5" style="text-align:center">
                 <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
                 <hr class="my-3">
-                <a href="addactivity.php">Add Activity</a>
-                <a>Profile</a>
+                <a href="activityques.php">Add Activity</a>
+                <a href="profile.php">Profile</a>
                 <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
-                <a>Recommendation</a>
-                <a>Education contents</a>
+                <a href = "Recommendation.php">Recommendation</a>
+                <a>Education Content</a>
                     <!-- Add more links as needed -->
             </nav>
+              
     
             
             
 
-            <div class="col-md-8 pt-5">
-                <h1>My dynamic dashboard</h1>
-                <!-- Create a canvas element for the pie chart -->
-                <div id="chartContainer" style="width: 500px; height: 500px;">
-                <canvas id="dashPieChart"></canvas>
+            <body>
+                <div class="col p-5">
+                    <h1>My dynamic dashboard</h1>               
+                    <br><br>
+                    <!-- Create a canvas element for the pie chart -->
+                    <div id="chartContainer" style="width: 500px; height: 500px;">
+                        <canvas id="dashPieChart"></canvas>
+                    </div>
+                    <br>
+                    <button id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;">Add Carbon Data</button>
                 </div>
                 <!-- Create a canvas element for the line chart -->
                 <div id="chartContainerBar" style="width: 900px; height: 600px;">
@@ -119,6 +125,8 @@ $conn->close();
                 </div>
                 
                 <button id="addCDataBtn" class="btn btn-primary">Add Carbon Data</button>
+            </body>
+
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script>
                 // Get the canvas element
@@ -128,7 +136,7 @@ $conn->close();
                 var totalRatings = <?php echo json_encode($totalRatings); ?>;
 
                 // Extract individual total rating values
-                var labels = ['Transportation', 'Energy usage', 'Diet', 'Waste Managment', 'Miscellaneous'];
+                var labels = ['Transportation', 'Energy Usage', 'Diet', 'Waste Managment', 'Miscellaneous'];
                 var values = Object.values(totalRatings);
 
 
@@ -224,6 +232,7 @@ $conn->close();
                         // Add any other chart options here
                     }
                 });
+
 
                 // Set the width and height of the div containers
                 document.getElementById('chartContainerBar').style.width = '900px';
