@@ -174,15 +174,43 @@ $conn->close();
     var dataBar = {
                     labels: <?php echo json_encode($datesLine); ?>,
                     datasets: [
-                        <?php for($i = 0; $i < count($ratingsLine[0]); $i++) { ?>
-                        {
-                            label: 'Rating <?php echo $i + 1; ?>',
-                            data: <?php echo json_encode(array_column($ratingsLine, $i)); ?>,
-                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        },
-                        <?php } ?>
+        <?php for($i = 0; $i < count($ratingsLine[0]); $i++) { ?>
+        {
+            label: 'Rating <?php echo $i + 1; ?>',
+            data: <?php echo json_encode(array_column($ratingsLine, $i)); ?>,
+            backgroundColor: [<?php 
+                // Define an array of colors for each rating from 1 to 5
+                $colors = array(
+                    'rgba(255, 99, 132, 0.5)', // Rating 1 color
+                    'rgba(54, 162, 235, 0.5)', // Rating 2 color
+                    'rgba(255, 206, 86, 0.5)', // Rating 3 color
+                    'rgba(75, 192, 192, 0.5)', // Rating 4 color
+                    'rgba(153, 102, 255, 0.5)' // Rating 5 color
+                );
+                // Loop through each date and assign a color based on the rating
+                foreach ($ratingsLine as $index => $ratings) {
+                    echo "'" . $colors[$ratings[$i] - 1] . "',";
+                }
+            ?>],
+            borderColor: [
+                <?php 
+                // Define an array of colors for each rating from 1 to 5
+                $colors = array(
+                    'rgba(255, 99, 132, 1)', // Rating 1 color
+                    'rgba(54, 162, 235, 1)', // Rating 2 color
+                    'rgba(255, 206, 86, 1)', // Rating 3 color
+                    'rgba(75, 192, 192, 1)', // Rating 4 color
+                    'rgba(153, 102, 255, 1)' // Rating 5 color
+                );
+                // Loop through each date and assign a color based on the rating
+                foreach ($ratingsLine as $index => $ratings) {
+                    echo "'" . $colors[$ratings[$i] - 1] . "',";
+                }
+                ?>
+            ],
+            borderWidth: 1
+        },
+        <?php } ?>
                     ]
                 };
                 // Create the bar chart
