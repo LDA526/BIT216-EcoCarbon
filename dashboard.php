@@ -63,7 +63,6 @@ if ($user["admin"] == 1) {
 }
 
 
-
 // Close the database connection
 $conn->close();
 
@@ -116,6 +115,7 @@ $conn->close();
                 <a>Friends</a>
                 <a href = "Recommendation.php">Recommendation</a>
                 <a href = "<?php echo $admin; ?>">Education Content</a>
+
                     <!-- Add more links as needed -->
             </nav>
               
@@ -203,6 +203,7 @@ $conn->close();
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
                         }
+
                         <?php } ?>
                     ]
                 };

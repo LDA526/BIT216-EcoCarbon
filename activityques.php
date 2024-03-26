@@ -42,12 +42,12 @@ require_once 'includes/config_session.inc.php';
             <nav class="col-md-2 d-md-block side-menu p-5" style="text-align:center">
                 <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
                 <hr class="my-3">
-                <a href="addactivity.php">Add Activity</a>
-                <a>Profile</a>
+                <a href="activityques.php">Add Activity</a>
+                <a href="profile.php">Profile</a>
                 <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
-                <a>Recommendation</a>
-                <a>Education contents</a>
+                <a href = "Recommendation.php">Recommendation</a>
+                <a href = "AddContent.php">Education Content</a>
                     <!-- Add more links as needed -->
             </nav>
 
@@ -57,15 +57,28 @@ require_once 'includes/config_session.inc.php';
             <!-- Form for submitting questions and ratings -->
             <form method="post" action="submittedanswer.php">
                 <div class="mb-3">
-                <label for="activity_date" class="form-label">Today's Date : </label>
-                <input type="date" id="activity_date" name="activity_date" required>
+                    <label for="activity_date" class="form-label">Today's Date : </label>
+                    <input type="date" id="activity_date" name="activity_date" required>
+
+                    <script>
+                        var dateInput = document.getElementById("activity_date");
+                        var currentDate = new Date();
+                        var formattedDate = currentDate.toISOString().substr(0, 10);
+                        dateInput.value = formattedDate;
+                    </script>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Rating: 1 = Rarely, 2 = Occasionally , 3 = Sometimes , 4 = Frequently , 5 = Very Frequently </label>
                 </div>
 
 
                 <!-- Question 1 -->
-                    <label for="question1" class="form-label">Question 1:</label>
+                <div class="mb-3">
+                    <label for="question1" class="form-label"><strong>Question 1:</strong></label>
                     <div>
-                    <label>How many hours you've been in a vehicle to travel from place to place ?</label>
+                        <label>Did you travel with a vehicle today?</label>
                     </div>
                 </div>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -77,12 +90,13 @@ require_once 'includes/config_session.inc.php';
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-        <br>
-        <br>
+                <br>
+                <br>
                 <!-- Question 2 -->
-                <label for="question2" class="form-label">Question 2:</label>
+                <div class="mb-3">
+                <label for="question2" class="form-label"><strong>Question 2:</strong></label>
                     <div>
-                    <label>How many hours would you open air-conditioner for ?</label>
+                        <label>Did you use many electrical appliances today?</label>
                     </div>
                 </div>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -94,13 +108,14 @@ require_once 'includes/config_session.inc.php';
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-        <br>
-        <br>
+                <br>
+                <br>
 
                 <!-- Question 3 -->
-                <label for="question3" class="form-label">Question 3:</label>
+                <div class="mb-3">
+                <label for="question3" class="form-label"><strong>Question 3:</strong></label>
                     <div>
-                    <label>How many meals do you often purchased at outside vendors per day ?</label>
+                    <label>Did you consume more meat than vegetables today?</label>
                     </div>
                 </div>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -112,13 +127,14 @@ require_once 'includes/config_session.inc.php';
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-        <br>
-        <br>
+                <br>
+                <br>
 
                 <!-- Question 4 -->
-                <label for="question4" class="form-label">Question 4:</label>
+                <div class="mb-3">
+                <label for="question4" class="form-label"><strong>Question 4:</strong></label>
                     <div>
-                    <label>Rate your efforts in minimizing food waste in your household</label>
+                    <label>Rate your efforts in minimizing waste in your household</label>
                     </div>
                 </div>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -130,15 +146,17 @@ require_once 'includes/config_session.inc.php';
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-        <br>
-        <br>
+                <br>
+                <br>
+
                 <!-- Question 5 -->
-                <label for="question5" class="form-label">Question 5:</label>
+                <div class="mb-3">
+                <label for="question5" class="form-label"><strong>Question 5:</strong></label>
                     <div>
                     <label>How often do you purchase locally sourced, sustainably produced goods, and even energy-efficient goods?</label>
                     </div>
                 </div>
-                <<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <label for="rating5">Select rating:</label>
                  <select name="rating5" id="rating5">
                     <option value="1">1</option>
@@ -147,28 +165,13 @@ require_once 'includes/config_session.inc.php';
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-        <br>
-        <br>
+                <br>
+                <br>
 
                 <button type="submit" class="btn btn-warning" style="background-color: #426B1F; color: #ffffff;">Submit</button>
-                
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-    
-</script>
-
-                
-</div>
-                            
-                        
+          
             </div>
-        </div>
-    </div>
+            </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -179,12 +182,5 @@ require_once 'includes/config_session.inc.php';
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
     
-
-    
-    
     </body>
-
-    
-
-
 </html>

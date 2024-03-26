@@ -62,7 +62,7 @@ body {
 }
 
 .btn-book-now {
-  background-color: #7c4dff; /* Button background color */
+  background-color: #15790D; /* Button background color */
   color: white; /* Text color */
   border: none; /* Remove button border */
   border-radius: 5px; /* Rounded corners */
@@ -126,12 +126,12 @@ body {
 }
 
 .page-body {
-  background: rgb(50, 44, 153);
+  background: rgb(21, 121, 13);
   background: linear-gradient(
     320deg,
-    rgba(50, 44, 153, 1) 8%,
-    rgba(114, 48, 233, 1) 53%,
-    rgba(157, 21, 255, 1) 75%
+    rgba(21, 121, 13, 1) 8%,
+    rgba(19, 107, 12, 1) 53%,
+    rgba(12, 71, 8, 1) 75%
   );
 }
 

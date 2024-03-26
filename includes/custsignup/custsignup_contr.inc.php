@@ -2,8 +2,8 @@
 
 declare(strict_types = 1);
 
-function is_input_empty(string $username, string $fullname, string $pwd, string $gender, string $email,$contactno) {
-    if(empty($username) || empty($fullname) || empty($pwd) 
+function is_input_empty(string $username, string $pwd, string $gender, string $email,$contactno) {
+    if(empty($username) || empty($pwd) 
     || empty($gender) || empty($email) || $contactno === 0) {
         return true;
     } else {
@@ -39,6 +39,6 @@ function is_email_registered(object $mysqli, string $email) {
 //     return is_int($contactno);
 // }
 
-function create_user(object $mysqli, string $username, string $fullname, string $pwd, string $gender, string $email, int $contactno) {
-    set_user($mysqli, $username, $fullname, $pwd, $gender, $email, $contactno);
+function create_user(object $mysqli, string $username, string $pwd, string $email, string $contactno, string $commute, string $energy, string $diet) {
+    set_user($mysqli, $username, $pwd, $email, $contactno, $commute, $energy, $diet);
 }

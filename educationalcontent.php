@@ -71,7 +71,8 @@ $user = $result->fetch_assoc();
                 <a>History</a>
                 <a>Friends</a>
                 <a href = "recommendation.php">Recommendation</a>
-                <a href = "educationalcontent.php">Edcucation Content</a>
+                <a href = "educationalcontent.php">Education Content</a>
+
                     <!-- Add more links as needed -->
             </nav>
 

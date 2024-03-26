@@ -23,10 +23,6 @@
         >
         <a
           class="nav-link"
-          href="merchantDashboard.php"
-          >Dashboard</a>
-        <a
-          class="nav-link"
           style="font-weight: bold"
           >Welcome <?php echo $_SESSION["user_username"]; ?>! </a
         >

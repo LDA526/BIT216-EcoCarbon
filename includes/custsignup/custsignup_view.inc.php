@@ -29,50 +29,6 @@ function signup_inputs() {
             </div>';
     }
 
-    if (isset($_SESSION["signup_data"]["fullname"])) {
-        echo '<div class="form-floating mb-4">
-                <input
-                    type="text"
-                    name="fullname"
-                    class="form-control form-control-lg"
-                    placeholder="John Doe"
-                    required
-                    value= "' . $_SESSION["signup_data"]["fullname"] . '"
-                />
-                <label for="formFullName">Full Name</label>
-            </div>';
-    } else {
-        echo '<div class="form-floating mb-4">
-                <input
-                    type="text"
-                    name="fullname"
-                    class="form-control form-control-lg"
-                    placeholder="John Doe"
-                    required
-                />
-                <label for="formFullName">Full Name</label>
-            </div>';
-    }
-
-    echo '<div class="form-floating mb-4">
-            <input
-                type="password"
-                name="password"
-                class="form-control form-control-lg"
-                placeholder="pwd123"
-                required
-            />
-            <label for="formPassword">Password</label>
-        </div>';
-
-        echo '<div class="mb-4">
-                <select class="form-select form-select-lg fs-8" name="gender" aria-label="Default select example" required>
-                    <option selected value="">Select Your Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>';
-
     if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["error_signup"]["invalid_email"]) && !isset($_SESSION["error_signup"]["taken_email"])) {
         echo '<div class="form-floating mb-4">
                 <input
@@ -122,6 +78,32 @@ function signup_inputs() {
                 <label for="formContactNo">Mobile Number</label>
             </div>';
     }
+
+    echo '<div class="mb-4">
+        <select class="form-select form-select-lg fs-8" name="commute" aria-label="Default select example" required>
+            <option selected value="" disabled>Commuting Preferences</option>
+            <option value="personal">Personal Vehicle</option>
+            <option value="public">Public Transportation</option>
+            <option value="walking">Walking</option>
+        </select>
+    </div>';
+
+    echo '<div class="mb-4">
+        <select class="form-select form-select-lg fs-8" name="energy" aria-label="Default select example" required>
+            <option selected value="" disabled>Energy Sources</option>
+            <option value="electricity">Electricity</option>
+            <option value="solar">Solar Power</option>
+        </select>
+    </div>';
+
+    echo '<div class="mb-4">
+        <select class="form-select form-select-lg fs-8" name="diet" aria-label="Default select example" required>
+            <option selected value="" disabled>Dietary Preferences</option>
+            <option value="mixed">Mixed Diet</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+        </select>
+    </div>';
 }
 
 function check_signup_errors() {

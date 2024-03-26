@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 function get_username(object $mysqli, string $username): bool {
-    $query = "SELECT username FROM customer WHERE username = ?";
+    $query = "SELECT username FROM user WHERE username = ?";
 
     $stmt = $mysqli->prepare($query);
 
@@ -22,7 +22,7 @@ function get_username(object $mysqli, string $username): bool {
 
 function get_email(object $mysqli, string $email): bool {
 
-    $query = "SELECT email FROM customer WHERE email = ?";
+    $query = "SELECT email FROM user WHERE email = ?";
 
     $stmt = $mysqli->prepare($query);
 
@@ -39,10 +39,10 @@ function get_email(object $mysqli, string $email): bool {
     return $email_exists;
 }
 
-function set_user(object $mysqli, string $username, string $fullname, string $pwd, string $gender, string $email, int $contactno) {
-    $query = "INSERT INTO customer (username, fullName, pwd, gender, email, contactno) VALUES (?, ?, ?, ?, ?, ?)";
+function set_user(object $mysqli, string $username, string $pwd, string $email, string $contactno, string $commute, string $energy, string $diet) {
+    $query = "INSERT INTO user (username, pwd, email, contactno, commute, energy, diet) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $stmt->bind_param("sssssi", $username, $fullname, $pwd, $gender, $email, $contactno);
+    $stmt->bind_param("sssssss", $username, $pwd, $email, $contactno, $commute, $energy, $diet);
     $stmt->execute();    
     $stmt->close();
 }

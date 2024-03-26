@@ -29,14 +29,14 @@
   <body>
   <div class="container mt-5">
         <div class="alert alert-success" role="alert">
-            Signup successful! You will be redirected to the login page in 4 seconds.
+            Signup successful! An email containing your new password has been sent. You will be redirected to the login page in 4 seconds.
         </div>
     </div>
 
     <script>
         // JavaScript to redirect after 4 seconds
         setTimeout(function() {
-            window.location.href = 'login.php';
+            window.location.href = 'index.php';
         }, 4000); // 4000 milliseconds (4 seconds)
     </script>
 </body>

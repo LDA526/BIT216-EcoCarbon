@@ -34,9 +34,8 @@ require_once 'includes/config_session.inc.php';
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="index.php" class="navbar-brand fw-bold"> <img src="assets/logo.png" alt="...">Travurr
+        <a href="index.php" class="navbar-brand fw-bold">EcoCarbon
         </a>
-        <h2>Log In</h2>
         <button
           class="navbar-toggler"
           type="button"
@@ -58,26 +57,14 @@ require_once 'includes/config_session.inc.php';
             >
             <a
               class="nav-link"
-              href="about.php"
-              >About Us</a>
-              <a
-              class="nav-link"
-              href="contact.php"
-              >Contact Us</a>
-              <a
-              class="nav-link"
-              href="faq.php"
-              >FAQ</a>
-            <a
-              class="nav-link"
               href="cust_registration.php"
               style="font-weight: bold"
               >Sign Up</a
             >
             <a
               class="nav-link btn btn-primary login-btn"
-              href="login.php"
-              style="font-weight: bold"
+              href="index.php"
+              style="font-weight: bold; background-color:#15790D;"
               >Login</a
             >
           </div>
@@ -123,16 +110,16 @@ require_once 'includes/config_session.inc.php';
                       <label for="formPassword">Password</label>
                     </div>
 
-                    <div class="input-group mb-3 justify-content-between">
+                    <!-- <div class="input-group mb-3 justify-content-between">
                       <div class="forgot">
                         <a href="#">Forgot Password?</a>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="pt-1 mb-4">
                       <button
                         class="btn btn-primary btn-lg btn-block"
-                        style="background-color: #7c4dff;"
+                        style="background-color: #15790D;"
                         type="submit"
                       >
                         Login
@@ -141,7 +128,7 @@ require_once 'includes/config_session.inc.php';
 
                     <p class="mb-5 pb-lg-2" style="color: #393f81">
                       Don't have an account?
-                      <a href="cust_registration.php" style="color: #393f81">Sign Up</a>
+                      <a href="cust_registration.php" style="color: #15790D">Sign Up</a>
                     </p>
                   </form>
                 </div>

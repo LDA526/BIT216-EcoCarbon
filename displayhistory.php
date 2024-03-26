@@ -16,16 +16,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Prepare and execute the query
+$query = "SELECT * FROM user WHERE username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $_SESSION["user_username"]);
+$stmt->execute();
+
+// Fetch the result
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
 // Function to retrieve carbon data from the database
-function getCarbonDataFromDatabase($from_date, $to_date, $conn) {
+function getCarbonDataFromDatabase($from_date, $to_date, $user_id, $conn) {
 
     
     // Prepare the SQL query to fetch data from the activity_responses table
-    $sql = "SELECT * FROM activity_responses WHERE activity_date BETWEEN ? AND ?";
+    $sql = "SELECT * FROM activity_responses WHERE activity_date BETWEEN ? AND ? AND user_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $from_date, $to_date);
+    $stmt->bind_param("sss", $from_date, $to_date, $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
+
+
 
     // Fetch data from the result set
     $carbonData = array();
@@ -41,21 +53,30 @@ function getCarbonDataFromDatabase($from_date, $to_date, $conn) {
         );
     }
 
-    // Return the fetched carbon data
-    return $carbonData;
+
+        // Return the fetched carbon data
+        return $carbonData;
 }
+
 
 // Retrieve dates from URL parameters
 $from_date = $_GET['from_date'] ?? '';
 $to_date = $_GET['to_date'] ?? '';
 
+// Get user ID from session
+$user_id = $user["id"] ?? '';
+
+
+
 // Check if both from_date and to_date are provided
-if (!empty($from_date) && !empty($to_date)) {
+if (!empty($from_date) && !empty($to_date) && !empty($user_id)) {
     // Fetching carbon data from the database
-    $carbonData = getCarbonDataFromDatabase($from_date, $to_date, $conn);
+    $carbonData = getCarbonDataFromDatabase($from_date, $to_date, $user_id, $conn);
+   
+
 } else {
     // If either from_date or to_date is missing, display an error message
-    echo "Please provide valid date range.";
+    echo "Please provide valid date range and username.";
     exit();
 }
 
@@ -92,12 +113,12 @@ include 'includes/headers/header_merchant.inc.php';
         <nav class="col-md-2 d-md-block side-menu p-5" style="text-align:center">
             <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
             <hr class="my-3">
-            <a href="addactivity.php">Add Activity</a>
-            <a>Profile</a>
-            <a href="searchhistory.php">History</a>
+            <a href="activityques.php">Add Activity</a>
+            <a href="profile.php">Profile</a>
+            <a  href="searchhistory.php">History</a>
             <a>Friends</a>
-            <a>Recommendation</a>
-            <a>Education contents</a>
+            <a href = "Recommendation.php">Recommendation</a>
+            <a>Education Content</a>
             <!-- Add more links as needed -->
         </nav>
 
@@ -130,6 +151,7 @@ include 'includes/headers/header_merchant.inc.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    <button>Recommendation</button>
 </div>
 
 

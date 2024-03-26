@@ -8,18 +8,18 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once '../config_session.inc.php';
     
     $username = $_POST["username"];
-    $fullname = $_POST["fullname"];
-    $pwd = $_POST["password"];
-    $gender = $_POST["gender"];
     $email = $_POST["email"];
     $contactno = $_POST["contactno"];
+    $commute = $_POST["commute"];
+    $energy = $_POST["energy"];
+    $diet = $_POST["diet"];
 
     $errors = [];
 
     // if(!is_contactno_valid($contactno)) {
     //     $errors["invalid_number"] = "Contact Number must be numbers!";
     // }
-    if(is_input_empty($username, $fullname, $pwd, $gender, $email, $contactno)) {
+    if(is_input_empty($username, $email, $contactno, $commute, $energy, $diet)) {
         $errors["empty_input"] = "Fill in all fields!";
     }
     if(is_email_invalid($email)) {
@@ -37,16 +37,39 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $signupData = [
             "username" => $username,
             "fullname" => $fullname,
-            "gender" => $gender,
             "email" => $email,
-            "contactno" => $contactno
+            "contactno" => $contactno,
+            "commute" => $commute,
+            "energy" => $energy,
+            "diet" => $diet
         ];
         $_SESSION["signup_data"] = $signupData;
         header("Location: ../../cust_registration.php");
         die();
     }
 
-    create_user($mysqli, $username, $fullname, $pwd, $gender, $email, $contactno);
+    $pwd = "default";
+
+    create_user($mysqli, $username, $pwd, $email, $contactno, $commute, $energy, $diet);
+
+    // send mail
+    $to = $email;
+    $subject = "User Account Confirmation";
+    $message = "Thank you for registering to EcoCarbon. \r\n \r\n
+                
+                Your username is " . $username . ".\r\n
+                Your new password is " . $pwd . ".";
+
+    $headers = "From: ecocarbon@helplive.edu.my\r\n";
+    $headers .= "Reply-To: ecocarbon@helplive.edu.my\r\n";
+    $headers .= "Content-type: text/html; charset=utf-8\r\n";
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Email sent successfully";
+    }
+    else {
+        echo "Failed to send email";
+    }
 
     header("Location: ../../signupsuccess.php");
     die();

@@ -39,12 +39,13 @@ require_once 'includes/config_session.inc.php';
             <nav class="col-md-2 d-md-block side-menu p-5" style="text-align:center">
                 <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
                 <hr class="my-3">
-                <a>Add Activity</a>
-                <a>Profile</a>
-                <a>History</a>
+                <a href="activityques.php">Add Activity</a>
+                <a href="profile.php">Profile</a>
+                <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
                 <a href="recommendation.php">Recommendation</a>
                 <a href="educationalcontent.php">Education content</a>
+
                     <!-- Add more links as needed -->
             </nav>
 
