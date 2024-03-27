@@ -75,9 +75,9 @@ require_once 'includes/config_session.inc.php';
                           <input type="url" class="form-control"  name="ulurl" placeholder="Please upload the link here" >
                         </div>
 
-                        <button type="reset" class="btn btn-primary">Reset</button><br>
+                        <button type="reset" class="btn btn-primary m-1">Reset</button><br>
 
-                        <button type="submit" class="btn btn-primary" name="upload">Upload</button>
+                        <button type="submit" class="btn btn-primary m-1" name="upload">Upload</button>
                     </form>
 
                     <!--fetch data-->

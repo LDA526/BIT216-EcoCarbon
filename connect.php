@@ -17,6 +17,7 @@ if (isset($_POST['upload'])) {
 
     //inseret data
     mysqli_query ($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl')");
+    header("location:addcontent.php");
 
     // Using a prepared statement to prevent SQL injection
     /*$sql = "INSERT INTO uploadcontent (Image, Title, Description, URL) VALUES (?, ?, ?, ?)";
