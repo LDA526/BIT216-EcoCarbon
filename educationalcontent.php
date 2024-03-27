@@ -1,4 +1,5 @@
 <?php
+
 require_once 'includes/config_session.inc.php';
 
 // Create connecton
@@ -98,7 +99,7 @@ $user = $result->fetch_assoc();
                     </table>
                      -->
                     
-                    <div class="education-content-block">
+              <div class="education-content-block">
                 <h1>Education content about the Eco carbon</h1>
 
                 <div clss="education-content-introduce">
@@ -144,6 +145,26 @@ $user = $result->fetch_assoc();
                       The UNFCCC is the global intergovernmental organization on climate change, and their website provides a wealth of information and resources on climate change and carbon emissions that can help people better understand and address this challenge.
                     </p></a>
                   </div>
+
+                  <?php
+                    include 'config.php';
+                    $pic = mysqli_query($con,"SELECT * FROM `uploadcontent`");
+                    while($row = mysqli_fetch_array($pic)){
+
+                    $cssClassecs = "education-content-show";
+                    $cssClassecsp = "education-content-show-picture";
+                    $cssClassecsw = "education-content-show-words";
+                    echo"
+                      <div class='$cssClassecs'>
+                        <a href='$row[URL]'><img class='$cssClassecsp' src='$row[Image]' width ='400px' height ='150px' center>
+                        <a href='$row[URL]'></a><p class='$cssClassecsw'>
+                        <strong>$row[Title]</strong><br>
+                        $row[Description]
+                        </p></a>
+                      </div>
+                    ";
+                    }
+                  ?>
 
                 </div>
 

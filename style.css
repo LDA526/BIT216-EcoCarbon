@@ -456,6 +456,8 @@ a:hover {
 }
 
 .education-content-show-picture {
+  height: 450px;
+  width: 450px;
   display: inline-block;
   object-fit: cover;
   object-position: center;
