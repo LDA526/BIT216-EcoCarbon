@@ -45,7 +45,7 @@
 
     <div class="container-fluid pb-5">
   
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="update1.php" method="POST" enctype="multipart/form-data">
                         <h2>Update Education Content</h2>
 
                         <div class="mb-3">
