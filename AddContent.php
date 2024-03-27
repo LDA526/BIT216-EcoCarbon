@@ -26,6 +26,7 @@ require_once 'includes/config_session.inc.php';
         />
         <link rel="stylesheet" href="style.css" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         
     </head>
 
@@ -51,33 +52,74 @@ require_once 'includes/config_session.inc.php';
 
             <div class="col-md-8 pt-5">
                     
-                      <form action="connect.php" method="post" enctype="multipart/form-data">
+                    <form action="connect.php" method="POST" enctype="multipart/form-data">
                         <h2>Add Education Content</h2>
 
                         <div class="mb-3">
-                          <label for="ulimage" class="form-label">Upload Image</label>
-                          <input type="file" class="form-control" id="ulimage" name="ulimage" accept="image/*">
+                          <label for="" >Upload Image</label>
+                          <input type="file" class="form-control"  name="ulimage" accept="image/*,video/*" required>
                         </div>
 
                         <div class="mb-3">
-                          <label for="ultitle" class="form-label">Title</label>
-                          <input type="text" class="form-control" id="ultitle" name="ultitle" placeholder="What's the title?" required>
+                          <label for="" >Title</label>
+                          <input type="text" class="form-control"  name="ultitle" placeholder="What's the title?" required>
                         </div>
 
                         <div class="mb-3">
-                          <label for="uldescription" class="form-label">Description</label>
-                          <input type="text" class="form-control" id="uldescription" name="uldescription" placeholder="Some description?" required>
+                          <label for="" >Description</label>
+                          <input type="text" class="form-control"  name="uldescription" placeholder="Some description?" required>
                         </div>
 
                         <div class="mb-3">
-                          <label for="ulurl" class="form-label">Video URL</label>
-                          <input type="url" class="form-control" id="ulurl" name="ulurl" placeholder="Please upload the link here" >
+                          <label for="ulurl" >Video URL</label>
+                          <input type="url" class="form-control"  name="ulurl" placeholder="Please upload the link here" >
                         </div>
 
                         <button type="reset" class="btn btn-primary">Reset</button><br>
 
                         <button type="submit" class="btn btn-primary" name="upload">Upload</button>
-                      </form>
+                    </form>
+
+                    <!--fetch data-->
+
+                    <div class="contaioner">
+
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Describtion</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Delect</th>
+                            <th scope="col">Update</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        
+                          <?php
+                            include 'config.php';
+                            $pic = mysqli_query($con,"SELECT * FROM `uploadcontent`");
+                            while($row = mysqli_fetch_array($pic)){
+                            echo "
+                              <tr>
+                                <td>$row[id]</td>
+                                <td><img src='$row[Image]' width ='100px' height ='70px'></td>
+                                <td>$row[Title]</td>
+                                <td>$row[Description]</td>
+                                <td>$row[URL]</td>
+                                <td><a href='delete.php? Id= $row[id]' class = 'btn btn-danger'>Delect</a></td>
+                                <td><a href='update.php? Id= $row[id]' class = 'btn btn-danger'>Update</a></td>
+                              </tr>
+                              ";
+                            }
+
+                          ?>
+
+                        </tbody>
+                      </table>
+                    </div>
             </div>
           </div>
         </div>

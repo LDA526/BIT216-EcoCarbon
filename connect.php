@@ -1,33 +1,36 @@
 <?php
-require_once 'includes/config_session.inc.php';
+/*require_once 'includes/config_session.inc.php';*/
 
-$conn = mysqli_connect('localhost', 'root', '', 'ecocarbon_database');
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+include 'config.php';
 
 if (isset($_POST['upload'])) {
     $image = $_FILES['ulimage'];
     print_r($_FILES['ulimage']);
     $img_loc = $_FILES['ulimage']['tmp_name'];
     $img_name = $_FILES['ulimage']['name'];
-
+    $img_des = "uploadimage/".$img_name;
+    move_uploaded_file($img_loc,'uploadimage/'.$img_name);
     $ultitle = $_POST['ultitle'];
     $uldescription = $_POST['uldescription'];
     $ulurl = $_POST['ulurl'];
+    }
+
+    //inseret data
+    mysqli_query ($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl')");
 
     // Using a prepared statement to prevent SQL injection
-    $sql = "INSERT INTO uploadcontent (Image, Title, Description, URL) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $sql);
+    /*$sql = "INSERT INTO uploadcontent (Image, Title, Description, URL) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);*/
+    
 
     /*if (move_uploaded_file($img_loc, 'C:\xampp\htdocs\BIT216-EcoCarbon\uploadimage' . $img_name)) {
         echo "File moved successfully";
     } else {
         echo "Error moving file";
-    }*/
+    }
 
     mysqli_close($conn);
-}
+    }
 
 
 
@@ -68,5 +71,7 @@ if (isset($_POST['upload'])) {
 
     mysqli_close($conn);
 }*/
+
+
 ?>
   
