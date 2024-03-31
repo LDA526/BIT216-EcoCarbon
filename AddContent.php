@@ -109,8 +109,8 @@ require_once 'includes/config_session.inc.php';
                                 <td>$row[Title]</td>
                                 <td>$row[Description]</td>
                                 <td>$row[URL]</td>
-                                <td><a href='delete.php? Id= $row[id]' class = 'btn btn-danger'>Delect</a></td>
-                                <td><a href='update.php? Id= $row[id]' class = 'btn btn-danger'>Update</a></td>
+                                <td><a href='delete.php? Id=$row[id]' class = 'btn btn-danger'>Delect</a></td>
+                                <td><a href='update.php? Id=$row[id]' class = 'btn btn-danger'>Update</a></td>
                               </tr>
                               ";
                             }
@@ -137,4 +137,5 @@ require_once 'includes/config_session.inc.php';
 
 
 </html>
+
 

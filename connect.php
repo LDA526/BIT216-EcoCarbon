@@ -8,17 +8,16 @@ if (isset($_POST['upload'])) {
     print_r($_FILES['ulimage']);
     $img_loc = $_FILES['ulimage']['tmp_name'];
     $img_name = $_FILES['ulimage']['name'];
-    $img_des = "uploadimage/".$img_name;
-    move_uploaded_file($img_loc,'uploadimage/'.$img_name);
-    $ultitle = $_POST['ultitle'];
-    $uldescription = $_POST['uldescription'];
-    $ulurl = $_POST['ulurl'];
-    }
+    $img_des = "uploadimage/" . mysqli_real_escape_string($con, $img_name);
+    move_uploaded_file($img_loc, 'uploadimage/' . $img_name);
+    $ultitle = mysqli_real_escape_string($con, $_POST['ultitle']);
+    $uldescription = mysqli_real_escape_string($con, $_POST['uldescription']);
+    $ulurl = mysqli_real_escape_string($con, $_POST['ulurl']);
 
     //inseret data
-    mysqli_query ($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl')");
+    mysqli_query($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl')");
     header("location:addcontent.php");
-
+}
     // Using a prepared statement to prevent SQL injection
     /*$sql = "INSERT INTO uploadcontent (Image, Title, Description, URL) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);*/
@@ -75,4 +74,4 @@ if (isset($_POST['upload'])) {
 
 
 ?>
-  
+
