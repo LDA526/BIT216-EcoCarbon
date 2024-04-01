@@ -166,6 +166,12 @@ $user = $result->fetch_assoc();
                     }
                   ?>
 
+                  <?php 
+                    if ($user && $user["admin"] == 1) {
+                      echo '<a class="btn btn-primary m-1" href="addcontent.php">Add Content</a><br>';
+                    } 
+                  ?>
+
                 </div>
 
               </div>
