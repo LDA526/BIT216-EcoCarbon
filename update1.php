@@ -13,9 +13,10 @@ if (isset($_POST['update'])) {
   $ultitle = $_POST['ultitle'];
   $uldescription = $_POST['uldescription'];
   $ulurl = $_POST['ulurl'];
+  $category = $_POST['category'];
 }
 
-  mysqli_query($con,"UPDATE `uploadcontent` SET `Image`='$img_des',`Title`='$ultitle',`Description`='$uldescription',`URL`='$ulurl' WHERE Id = $ID");
+  mysqli_query($con,"UPDATE `uploadcontent` SET `Image`='$img_des',`Title`='$ultitle',`Description`='$uldescription',`URL`='$ulurl',`Category`='$category' WHERE Id = $ID");
   header("location: addcontent.php");
 
   

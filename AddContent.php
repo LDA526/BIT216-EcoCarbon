@@ -75,6 +75,16 @@ require_once 'includes/config_session.inc.php';
                           <input type="url" class="form-control"  name="ulurl" placeholder="Please upload the link here" >
                         </div>
 
+                        <div class="mb-3">
+                          <label for="" >Category</label>
+                          <select name="category" class="form-control" required>
+                            <option value="" disabled selected hidden >Please select one category here</option>
+                            <option value="transportation" name="transportation">transportation</option>
+                            <option value="energy" name="energy">energy</option>
+                            <option value="diet" name="diet">diet</option>
+                          </select>
+                        </div>
+
                         <button type="reset" class="btn btn-primary m-1">Reset</button><br>
 
                         <button type="submit" class="btn btn-primary m-1" name="upload">Upload</button>
@@ -88,6 +98,7 @@ require_once 'includes/config_session.inc.php';
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Image</th>
                             <th scope="col">Title</th>
                             <th scope="col">Describtion</th>
@@ -105,6 +116,7 @@ require_once 'includes/config_session.inc.php';
                             echo "
                               <tr>
                                 <td>$row[id]</td>
+                                <td>$row[Category]</td>
                                 <td><img src='$row[Image]' width ='100px' height ='70px'></td>
                                 <td>$row[Title]</td>
                                 <td>$row[Description]</td>

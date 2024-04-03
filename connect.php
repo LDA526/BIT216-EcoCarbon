@@ -13,9 +13,10 @@ if (isset($_POST['upload'])) {
     $ultitle = mysqli_real_escape_string($con, $_POST['ultitle']);
     $uldescription = mysqli_real_escape_string($con, $_POST['uldescription']);
     $ulurl = mysqli_real_escape_string($con, $_POST['ulurl']);
+    $category = mysqli_real_escape_string($con, $_POST['category']);
 
     //inseret data
-    mysqli_query($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl')");
+    mysqli_query($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`, `Category`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl','$category')");
     header("location:addcontent.php");
 }
     // Using a prepared statement to prevent SQL injection

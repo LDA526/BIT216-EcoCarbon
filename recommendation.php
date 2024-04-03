@@ -43,8 +43,8 @@ require_once 'includes/config_session.inc.php';
                 <a href="profile.php">Profile</a>
                 <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
-                <a href = "Recommendation.php">Recommendation</a>
-                <a>Education Content</a>
+                <a href = "recommendation.php">Recommendation</a>
+                <a href = "educationalcontent.php">Education Content</a>
                     <!-- Add more links as needed -->
             </nav>
 

@@ -145,32 +145,53 @@ $user = $result->fetch_assoc();
                       The UNFCCC is the global intergovernmental organization on climate change, and their website provides a wealth of information and resources on climate change and carbon emissions that can help people better understand and address this challenge.
                     </p></a>
                   </div>
+                  
+                  <br>
 
-                  <?php
-                    include 'config.php';
-                    $pic = mysqli_query($con,"SELECT * FROM `uploadcontent`");
-                    while($row = mysqli_fetch_array($pic)){
-
-                    $cssClassecs = "education-content-show";
-                    $cssClassecsp = "education-content-show-picture";
-                    $cssClassecsw = "education-content-show-words";
-                    echo"
-                      <div class='$cssClassecs'>
-                        <a href='$row[URL]'><img class='$cssClassecsp' src='$row[Image]' width ='400px' height ='150px' center>
-                        <a href='$row[URL]'></a><p class='$cssClassecsw'>
-                        <strong>$row[Title]</strong><br>
-                        $row[Description]
-                        </p></a>
-                      </div>
-                    ";
-                    }
-                  ?>
+                  <form method="post" action=""> 
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                      <option value="" disabled selected hidden>Please select one category here</option>
+                      <option value="transportation">Transportation</option>
+                      <option value="energy">Energy</option>
+                      <option value="diet">Diet</option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary m-1" name="upload">Go</button><br>
+                  </form>
 
                   <?php 
                     if ($user && $user["admin"] == 1) {
                       echo '<a class="btn btn-primary m-1" href="addcontent.php">Add Content</a><br>';
                     } 
                   ?>
+
+                  <div id="contentContainer">
+                    <?php
+                      include 'config.php';
+                      if(isset($_POST['upload'])) {
+                        $category = $_POST['category'];
+                        $pic = mysqli_query($con,"SELECT * FROM `uploadcontent` WHERE `Category`='$category'");
+                      while($row = mysqli_fetch_array($pic)){
+                        $cssClassecs = "education-content-show";
+                        $cssClassecsp = "education-content-show-picture";
+                        $cssClassecsw = "education-content-show-words";
+                        echo "
+                          <div class='$cssClassecs'>
+                            <a href='$row[URL]'><img class='$cssClassecsp' src='$row[Image]' width ='400px' height ='150px' center></a>
+                            <a href='$row[URL]'>
+                              <p class='$cssClassecsw'>
+                                <strong>$row[Title]</strong><br>
+                                $row[Description]
+                              </p>
+                            </a>
+                          </div>
+                          ";
+                        }
+                      }
+                    ?>
+                  </div>
+
 
                 </div>
 

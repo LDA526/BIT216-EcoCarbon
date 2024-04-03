@@ -68,6 +68,16 @@
                           <input type="url" class="form-control" value="<?php echo $data['URL'] ?>" name="ulurl" placeholder="Please upload the link here" >
                         </div>
 
+                        <div class="mb-3">
+                          <label for="" >Category</label>
+                          <select name="category" class="form-control" required>
+                            <option value="" disabled selected hidden >Please select one category here</option>
+                            <option value="transportation" name="transportation">transportation</option>
+                            <option value="energy" name="energy">energy</option>
+                            <option value="diet" name="diet">diet</option>
+                          </select>
+                        </div>
+
                         <button type="reset" class="btn btn-primary m-1">Reset</button><br>
                           <input type="hidden" name="Id" value="<?php echo $data['id'] ?>">
                         <button type="submit" class="btn btn-primary m-1" name="update">Update</button>
