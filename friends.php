@@ -153,7 +153,7 @@ if (isset($_GET["newfriend"])) {
                             <div class=\"card\">
                             <div class=\"card-body\">
                                 <h5 class=\"card-title\"> {$newfriend["username"]} </h5>
-                                <a type=\"button\" class=\"btn btn-sm btn-primary float-right\" href=\"addfriend.php?id={$newfriend["id"]}\"  onclick=\"showAlert()\">Add Friend</a>
+                                <a type=\"button\" class=\"btn btn-sm btn-primary float-right\" href=\"addfriend.php?id={$newfriend["id"]}\">Add Friend</a>
                             </div>
                             </div>
                         </div> <br>";
