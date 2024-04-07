@@ -25,6 +25,12 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
+if ($user["admin"] == 1) {
+    $admin = "addcontent.php";
+}else {
+    $admin = "educationalcontent.php";
+}
+
 $friendID = $_GET["friend"];
 
 $query = "SELECT username FROM user WHERE id = ?";
@@ -147,10 +153,10 @@ if (isset($_GET["msg"])) {
                 <hr class="my-3">
                 <a href="activityques.php">Add Activity</a>
                 <a href="profile.php">Profile</a>
-                <a  href="searchhistory.php">History</a>
-                <a>Friends</a>
+                <a href="searchhistory.php">History</a>
+                <a href="friends.php">Friends</a>
                 <a href = "Recommendation.php">Recommendation</a>
-                <a>Education Content</a>
+                <a href = "<?php echo $admin; ?>">Education Content</a>
                     <!-- Add more links as needed -->
             </nav>
         

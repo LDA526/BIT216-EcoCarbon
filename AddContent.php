@@ -6,7 +6,7 @@ require_once 'includes/config_session.inc.php';
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>My Dashboard</title>
+        <title>Add Content</title>
         <link rel="icon" type="image/png" href="assets/logo.png" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -58,10 +58,10 @@ require_once 'includes/config_session.inc.php';
                 <hr class="my-3">
                 <a href="activityques.php">Add Activity</a>
                 <a href="profile.php">Profile</a>
-                <a  href="searchhistory.php">History</a>
-                <a>Friends</a>
-                <a href="recommendation.php">Recommendation</a>
-                <a href="educationalcontent.php">Education content</a>
+                <a href="searchhistory.php">History</a>
+                <a href="friends.php">Friends</a>
+                <a href = "Recommendation.php">Recommendation</a>
+                <a href="educationalcontent.php">Education Content</a>
 
                     <!-- Add more links as needed -->
             </nav>

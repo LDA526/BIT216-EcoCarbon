@@ -11,6 +11,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: displayhistory.php?from_date=$from_date&to_date=$to_date");
     exit();
 }
+
+// Replace these with your actual database credentials
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ecocarbon_database";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// Prepare and execute the query
+$query = "SELECT * FROM user WHERE username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $_SESSION["user_username"]);
+$stmt->execute();
+
+// Fetch the result
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+if ($user["admin"] == 1) {
+    $admin = "addcontent.php";
+}else {
+    $admin = "educationalcontent.php";
+}
+
+// Close the database connection
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -43,11 +75,11 @@ include 'includes/headers/header_merchant.inc.php';
             <h5 class="text-center"><?php echo $_SESSION["user_username"] ?>'s Dashboard</h5>
             <hr class="my-3">
             <a href="activityques.php">Add Activity</a>
-                <a href="profile.php">Profile</a>
-                <a  href="searchhistory.php">History</a>
-                <a>Friends</a>
-                <a href = "Recommendation.php">Recommendation</a>
-                <a>Education Content</a>
+            <a href="profile.php">Profile</a>
+            <a href="searchhistory.php">History</a>
+            <a href="friends.php">Friends</a>
+            <a href = "Recommendation.php">Recommendation</a>
+            <a href = "<?php echo $admin; ?>">Education Content</a>
             <!-- Add more links as needed -->
         </nav>
 

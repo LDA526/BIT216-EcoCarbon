@@ -15,6 +15,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Prepare and execute the query
+$query = "SELECT * FROM user WHERE username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $_SESSION["user_username"]);
+$stmt->execute();
+
+// Fetch the result
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+if ($user["admin"] == 1) {
+    $admin = "addcontent.php";
+}else {
+    $admin = "educationalcontent.php";
+}
+
 // Retrieve date from URL parameter
     $date = $_GET['date'] ?? '';
 
@@ -95,12 +111,12 @@ $totalRating = $carbonData[0]['rating1'] + $carbonData[0]['rating2'] + $carbonDa
                 <hr class="my-3">
                 <a href="activityques.php">Add Activity</a>
                 <a href="profile.php">Profile</a>
-                <a  href="searchhistory.php">History</a>
-                <a>Friends</a>
+                <a href="searchhistory.php">History</a>
+                <a href="friends.php">Friends</a>
                 <a href = "Recommendation.php">Recommendation</a>
-                <a>Education Content</a>
-                    <!-- Add more links as needed -->
-            </nav>
+                <a href = "<?php echo $admin; ?>">Education Content</a>
+                        <!-- Add more links as needed -->
+                </nav>
 
             <div class="col-md-8 pt-5">
 

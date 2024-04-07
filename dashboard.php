@@ -209,8 +209,7 @@ $conn->close();
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
-                        }
-
+                        },
                         <?php } ?>
                     ]
                 };
