@@ -170,8 +170,10 @@ if ($user["admin"] == 1) {
                     <select id="category" name="category" class="form-control" required>
                       <option value="" disabled selected hidden>Please select one category here</option>
                       <option value="transportation">Transportation</option>
-                      <option value="energy">Energy</option>
+                      <option value="energy">Energy Usage</option>
                       <option value="diet">Diet</option>
+                      <option value="waste">Waste Management</option>
+                      <option value="miscellaneous">Miscellaneous</option>
                       
                     </select>
                     <br>
