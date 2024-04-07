@@ -109,7 +109,7 @@ if (isset($_GET["msg"])) {
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Dashboard</title>
+        <title>Chat with <?php echo $friend_un ?></title>
         <link rel="icon" type="image/png" href="assets/logo.png" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -193,6 +193,8 @@ if (isset($_GET["msg"])) {
                 <div class="message-container">
 
                     <?php 
+                    $msg1 = nl2br($f["msg"]);
+                    $msg2 = nl2br($f2["msg"]);
                     if($f["incoming_msg_id"] == $friendID) {
                         if($f["last"] > $f2["last"]) {
                             echo "
@@ -201,7 +203,7 @@ if (isset($_GET["msg"])) {
                                 <strong>You:</strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f2["msg"]}
+                                    $msg2
                                 </div>
                             </div>
 
@@ -210,7 +212,7 @@ if (isset($_GET["msg"])) {
                                 <strong>$friend_un</strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f["msg"]}
+                                    $msg1
                                 </div>
                             </div>
                             ";
@@ -222,7 +224,7 @@ if (isset($_GET["msg"])) {
                                 <strong>$friend_un: </strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f["msg"]}
+                                    $msg1
                                 </div>
                             </div>
 
@@ -231,7 +233,7 @@ if (isset($_GET["msg"])) {
                                 <strong>You:</strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f2["msg"]}
+                                    $msg2
                                 </div>
                             </div>
                             ";
@@ -244,7 +246,7 @@ if (isset($_GET["msg"])) {
                                 <strong>You:</strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f["msg"]}
+                                    $msg1
                                 </div>
                             </div>
 
@@ -253,7 +255,7 @@ if (isset($_GET["msg"])) {
                                 <strong>$friend_un</strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f2["msg"]}
+                                    $msg2
                                 </div>
                             </div>
                             ";
@@ -265,7 +267,7 @@ if (isset($_GET["msg"])) {
                                 <strong>$friend_un: </strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f2["msg"]}
+                                    $msg2
                                 </div>
                             </div>
 
@@ -274,7 +276,7 @@ if (isset($_GET["msg"])) {
                                 <strong>You:</strong>
                                 </div>
                                 <div class=\"message-content\">
-                                    {$f["msg"]}
+                                    $msg1
                                 </div>
                             </div>
                             ";

@@ -26,14 +26,45 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if (isset($_GET["newfriend"])) {
-    $query = "SELECT * FROM user WHERE username = ?";
+if (isset($_GET["date"])) {
+    $date = $_GET["date"];
+}
+
+// Prepare and execute the query
+$query = "SELECT * FROM activity_responses WHERE activity_date = ? AND user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ss", $date, $user["id"]);
+$stmt->execute();
+
+// Fetch the result
+$result = $stmt->get_result();
+$activity = $result->fetch_assoc();
+
+if (isset($_GET["friend"])) {
+    $msg = "Transportation : ". $activity["rating1"] ."/5 \n" .
+    "Energy Usage : ". $activity["rating2"] ."/5 \n" .
+    "Diet : ". $activity["rating3"] ."/5 \n" .
+    "Waste Management : ". $activity["rating4"] ."/5 \n" .
+    "Misc : ". $activity["rating5"] ."/5";
+    $query = "UPDATE messages SET msg = ? WHERE incoming_msg_id = ? AND outgoing_msg_id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $_GET["newfriend"]);
+    $stmt->bind_param("sii", $msg, $user["id"], $_GET["friend"]);
     $stmt->execute();
 
-    $result = $stmt->get_result();
-    $newfriend = $result->fetch_assoc();
+    $sql = "UPDATE messages SET last = 1 WHERE incoming_msg_id = ? AND outgoing_msg_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $user["id"], $_GET["friend"]);
+    $stmt->execute();
+
+    $sql = "UPDATE messages SET last = 0 WHERE incoming_msg_id = ? AND outgoing_msg_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $_GET["friend"], $user["id"]);
+    $stmt->execute();
+    
+    echo "<script type='text/javascript'>
+            alert('Daily Activity Shared!');
+            window.location = 'chat.php?friend=". $_GET["friend"] ."';
+        </script>";
 }
 
 ?>
@@ -43,7 +74,7 @@ if (isset($_GET["newfriend"])) {
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Friends</title>
+        <title>Share Daily Activity</title>
         <link rel="icon" type="image/png" href="assets/logo.png" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,9 +121,9 @@ if (isset($_GET["newfriend"])) {
         
 
             <div class="col-md-8 pt-5">
-                <h2>Friends </h2>
+                <h2>Share with your friend</h2>
                 
-                <div class="content" style="display:inline-block;">
+                <div class="content" style="display:inline-block;" id="content">
                     <?php 
                         $sql = "SELECT * FROM friends WHERE userID = ?";
                         $stmt = $conn->prepare($sql);
@@ -100,7 +131,6 @@ if (isset($_GET["newfriend"])) {
                         $stmt->execute();
                         $result = $stmt->get_result();
                         $row = $result->fetch_all();
-                        // var_dump($row);
 
                         if ($row) {
                             foreach ($row as $r) {
@@ -117,7 +147,7 @@ if (isset($_GET["newfriend"])) {
                                         <div class=\"card\">
                                         <div class=\"card-body\">
                                             <h5 class=\"card-title\"> $username </h5>
-                                            <a type=\"button\" class=\"btn btn-sm btn-primary float-right\" href=\"chat.php?friend=$id\">Chat with Friend</a>
+                                            <a type=\"button\" class=\"btn btn-sm btn-primary float-right\" href=\"shareactivity.php?friend=$id&date=$date\">Share with Friend</a>
                                         </div>
                                         </div>
                                     </div> <br>";
@@ -126,40 +156,20 @@ if (isset($_GET["newfriend"])) {
                             echo "No friends added.";
                         }
 
-
                     ?>
                 
                 </div>
-
-                <h2>Add Friend</h2>
+                <?php 
+                if (!isset($activity)) {
+                    echo "<script>document.querySelector(\"#content\").setAttribute(\"style\", \"display:none\")</script>";
+                    echo "<div class=\"col-md-8 pt-5\">";
+                    echo "<h3>You did not update your activities today. Click the button below to do so!</h3>";
+                    echo "<a id=\"addCDataBtn\" class=\"btn btn-primary\" style=\"background-color: #15790D;\" href=\"activityques.php\">Add Carbon Data</a>";
+                    echo "</div>";
+                }
+                ?>      
                 
-                <div class="content" style="display:inline-block;">
-                    <form>
-                    <div class="container">
-                        <input type="text" class="form-control" id="exampleTextInput" placeholder="Enter username" name="newfriend">
-                    </div>
-                </div>
-
-                <div class="col-md-8 p-4">
-                <?php
-                    if (isset($newfriend)) {
-                        echo "<div class=\"container\">
-                            <div class=\"card\">
-                            <div class=\"card-body\">
-                                <h5 class=\"card-title\"> {$newfriend["username"]} </h5>
-                                <a type=\"button\" class=\"btn btn-sm btn-primary float-right\" href=\"addfriend.php?id={$newfriend["id"]}\"  onclick=\"showAlert()\">Add Friend</a>
-                            </div>
-                            </div>
-                        </div> <br>";
-                    }
-                    else {
-                        echo "<br><h4>No user with the matching username found</h4>";
-                    }
-                ?>
-                </div>
             
-                </div>
-                </section>
             </div>
         </div>
     
@@ -173,11 +183,7 @@ if (isset($_GET["newfriend"])) {
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-    <script>
-        function showAlert() {
-            alert('Send a friend request to this user?');
-        }
-    </script>
+    
     
     </body>
 

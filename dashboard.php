@@ -47,6 +47,7 @@ if ($resultLine->num_rows > 0) {
     }
 }
 
+$date = date("Y-m-d");
 
 
 // Close the database connection
@@ -117,7 +118,10 @@ $conn->close();
                         <canvas id="dashPieChart"></canvas>
                     </div>
                     <br>
-                    <button id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;">Add Carbon Data</button>
+                    <a id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;" href="activityques.php">Add Carbon Data</a>
+                    <a id="shareBtn" class="btn btn-primary" style="background-color: #15790D; margin-top: 5px;" href="shareactivity.php?date=<?php echo $date ?>">Share Daily Carbon Data</a>
+                </div>
+                <div class="col p-5">
                 </div>
                 <div class="col p-5">
                     <!-- Create a canvas element for the line chart -->
