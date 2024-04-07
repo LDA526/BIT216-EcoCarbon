@@ -142,7 +142,7 @@ if (isset($_GET["newfriend"])) {
                 <div class="content" style="display:inline-block;">
                     <form>
                     <div class="container">
-                        <input type="text" class="form-control" id="exampleTextInput" placeholder="Enter username" name="newfriend">
+                        <input type="text" class="form-control" id="exampleTextInput" placeholder="Enter username" name="newfriend" value="<?php if (isset($_GET["newfriend"])) echo $_GET["newfriend"] ?>">
                     </div>
                 </div>
 
@@ -159,7 +159,8 @@ if (isset($_GET["newfriend"])) {
                         </div> <br>";
                     }
                     else {
-                        echo "<br><h4>No user with the matching username found</h4>";
+                        if (isset($_GET["newfriend"]))
+                            echo "<br><h4>No user with the matching username found</h4>";
                     }
                 ?>
                 </div>
