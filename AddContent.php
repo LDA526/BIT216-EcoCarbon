@@ -26,7 +26,24 @@ require_once 'includes/config_session.inc.php';
         />
         <link rel="stylesheet" href="style.css" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              document.querySelector('input[name="ulimage"]').addEventListener("change", function () {
+                  var filename = this.value.split('\\').pop(); // 获取文件名
+                  var fileSize = this.files[0].size; // 获取文件大小
+                  var maxSize = 4 * 1024 * 1024; // 4MB
+
+                  if (filename.length > 250) { // 如果文件名超过250个字符
+                      alert("File name exceeds maximum length of 250 characters.");
+                      this.value = ""; // 清空文件选择框
+                  } else if (fileSize > maxSize) { // 如果文件大小超过4MB
+                      alert("File size exceeds maximum limit of 4MB.");
+                      this.value = ""; // 清空文件选择框
+                  }
+              });
+            });
+          </script>
     </head>
 
     <?php
@@ -43,42 +60,97 @@ require_once 'includes/config_session.inc.php';
                 <a href="profile.php">Profile</a>
                 <a  href="searchhistory.php">History</a>
                 <a>Friends</a>
-                <a href = "Recommendation.php">Recommendation</a>
-                <a>Education Content</a>
+                <a href="recommendation.php">Recommendation</a>
+                <a href="educationalcontent.php">Education content</a>
+
                     <!-- Add more links as needed -->
             </nav>
 
             <div class="col-md-8 pt-5">
                     
-                      <form action="connect.php" method="post">
+                    <form action="connect.php" method="POST" enctype="multipart/form-data">
                         <h2>Add Education Content</h2>
 
                         <div class="mb-3">
-                          <label for="ulimage" class="form-label">Upload Image</label>
-                          <input type="file" class="form-control" id="ulimage" name="ulimage" accept="image/*">
+                          <label for="" >Upload Image</label>
+                          <input type="file" class="form-control"  name="ulimage" accept="image/*,video/*" required>
                         </div>
 
                         <div class="mb-3">
-                          <label for="ultitle" class="form-label">Title</label>
-                          <input type="text" class="form-control" id="ultitle" name="ultitle" placeholder="What's the title?" required>
+                          <label for="" >Title</label>
+                          <input type="text" class="form-control"  name="ultitle" placeholder="What's the title?" required maxlength="50">
                         </div>
 
                         <div class="mb-3">
-                          <label for="uldescription" class="form-label">Description</label>
-                          <input type="text" class="form-control" id="uldescription" name="uldescription" placeholder="Some description?" required>
+                          <label for="" >Description</label>
+                          <input type="text" class="form-control"  name="uldescription" placeholder="Some description?" required maxlength="500">
                         </div>
 
                         <div class="mb-3">
-                          <label for="ulurl" class="form-label">Video URL</label>
-                          <input type="url" class="form-control" id="ulurl" name="ulurl" placeholder="Please upload the link here" >
+                          <label for="ulurl" >URL</label>
+                          <input type="url" class="form-control"  name="ulurl" placeholder="Please upload the link here" >
                         </div>
 
-                        <button type="reset" class="btn btn-primary">Reset</button><br>
-                        <a href = "AddContent.php"><button class="btn btn-primary">Cancel</button></a><br>
-                        <button type="submit" class="btn btn-primary" name="upload">Upload</button>
-                      </form>
-</div>
+                        <div class="mb-3">
+                          <label for="" >Category</label>
+                          <select name="category" class="form-control" required>
+                            <option value="" disabled selected hidden >Please select one category here</option>
+                            <option value="transportation" name="transportation">transportation</option>
+                            <option value="energy" name="energy">energy</option>
+                            <option value="diet" name="diet">diet</option>
+                            
+                          </select>
+                        </div>
+
+                        <button type="reset" class="btn btn-primary m-1">Reset</button><br>
+
+                        <button type="submit" class="btn btn-primary m-1" name="upload">Upload</button>
+                    </form>
+
+                    <!--fetch data-->
+
+                    <div class="contaioner">
+
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Describtion</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">delete</th>
+                            <th scope="col">Update</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        
+                          <?php
+                            include 'config.php';
+                            $pic = mysqli_query($con,"SELECT * FROM `uploadcontent`");
+                            while($row = mysqli_fetch_array($pic)){
+                            echo "
+                              <tr>
+                                <td>$row[id]</td>
+                                <td>$row[Category]</td>
+                                <td><img src='$row[Image]' width ='100px' height ='70px'></td>
+                                <td>$row[Title]</td>
+                                <td>$row[Description]</td>
+                                <td>$row[URL]</td>
+                                <td><a href='delete.php? Id=$row[id]' class = 'btn btn-danger'>Delete</a></td>
+                                <td><a href='update.php? Id=$row[id]' class = 'btn btn-danger'>Update</a></td>
+                              </tr>
+                              ";
+                            }
+
+                          ?>
+
+                        </tbody>
+                      </table>
+                    </div>
             </div>
+          </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -90,8 +162,13 @@ require_once 'includes/config_session.inc.php';
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-    </body>
+    
+    <!-- JavaScript -->
+    
+  
+  </body>
 
 
 </html>
+
 

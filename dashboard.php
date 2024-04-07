@@ -47,7 +47,24 @@ if ($resultLine->num_rows > 0) {
     }
 }
 
+
+$query = "SELECT * FROM user WHERE username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $_SESSION["user_username"]);
+$stmt->execute();
+
+// Fetch the result
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+if ($user["admin"] == 1) {
+    $admin = "addcontent.php";
+}else {
+    $admin = "educationalcontent.php";
+}
+
 $date = date("Y-m-d");
+
 
 
 // Close the database connection
@@ -101,7 +118,8 @@ $conn->close();
                 <a href="searchhistory.php">History</a>
                 <a href="friends.php">Friends</a>
                 <a href = "Recommendation.php">Recommendation</a>
-                <a>Education Content</a>
+                <a href = "<?php echo $admin; ?>">Education Content</a>
+
                     <!-- Add more links as needed -->
             </nav>
               
@@ -191,7 +209,8 @@ $conn->close();
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
-                        },
+                        }
+
                         <?php } ?>
                     ]
                 };

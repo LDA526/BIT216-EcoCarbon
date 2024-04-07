@@ -2,6 +2,7 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
+
 -- Host: 127.0.0.1
 -- Generation Time: Apr 07, 2024 at 06:05 AM
 -- Server version: 10.4.28-MariaDB
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecocarbon_database`
+-- 数据库： `ecocarbon_database`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activity_responses`
+-- 表的结构 `activity_responses`
 --
 
 CREATE TABLE `activity_responses` (
@@ -39,7 +40,7 @@ CREATE TABLE `activity_responses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `activity_responses`
+-- 转存表中的数据 `activity_responses`
 --
 
 INSERT INTO `activity_responses` (`id`, `user_id`, `activity_date`, `rating1`, `rating2`, `rating3`, `rating4`, `rating5`) VALUES
@@ -52,7 +53,7 @@ INSERT INTO `activity_responses` (`id`, `user_id`, `activity_date`, `rating1`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `friends`
+-- 表的结构 `friends`
 --
 
 CREATE TABLE `friends` (
@@ -62,7 +63,7 @@ CREATE TABLE `friends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `friends`
+-- 转存表中的数据 `friends`
 --
 
 INSERT INTO `friends` (`id`, `userID`, `friendID`) VALUES
@@ -74,6 +75,7 @@ INSERT INTO `friends` (`id`, `userID`, `friendID`) VALUES
 -- --------------------------------------------------------
 
 --
+
 -- Table structure for table `messages`
 --
 
@@ -98,7 +100,7 @@ INSERT INTO `messages` (`id`, `incoming_msg_id`, `outgoing_msg_id`, `msg`, `last
 -- --------------------------------------------------------
 
 --
--- Table structure for table `updates`
+-- 表的结构 `updates`
 --
 
 CREATE TABLE `updates` (
@@ -109,7 +111,7 @@ CREATE TABLE `updates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `updates`
+-- 转存表中的数据 `updates`
 --
 
 INSERT INTO `updates` (`userID`, `date`, `category`, `value`) VALUES
@@ -119,29 +121,41 @@ INSERT INTO `updates` (`userID`, `date`, `category`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `uploadcontent`
+-- 表的结构 `uploadcontent`
 --
 
 CREATE TABLE `uploadcontent` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `Image` varchar(250) NOT NULL,
+
+  `id` int(11) NOT NULL,
+  `Image` varchar(1024) NOT NULL,
   `Title` varchar(50) NOT NULL,
   `Description` varchar(500) NOT NULL,
-  `URL` varchar(250) NOT NULL
+  `URL` varchar(250) NOT NULL,
+  `Category` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `uploadcontent`
+-- 转存表中的数据 `uploadcontent`
 --
 
-INSERT INTO `uploadcontent` (`id`, `Image`, `Title`, `Description`, `URL`) VALUES
-(1, '屏幕截图 2024-03-08 202801.png', 'test1', 'this is the first test and post the image file it\'s successfully?', ''),
-(2, '屏幕截图 2024-03-08 202801.png', 'test2', 'this is the second test and post the image file and the website address it\'s successfully?', 'https://www.w3schools.com/html/html_links.asp');
+
+INSERT INTO `uploadcontent` (`id`, `Image`, `Title`, `Description`, `URL`, `Category`) VALUES
+(1, '屏幕截图 2024-03-08 202801.png', 'test1', 'this is the first test and post the image file it\'s successfully?', '', ''),
+(3, 'uploadimage/Default.jpg', 'test 3 update', 'this one is upload and after i willl update-----update already will display it or not?', '', ''),
+(4, 'uploadimage/MIUI02.jpg', 'title', 'this is just test for this add education content can run or not？1', 'https://www.youtube.com/', 'all'),
+(6, 'uploadimage/MIUI03.jpg', 'title update again', 'this is just test for this add education content can run or not？3', 'https://www.youtube.com/', ''),
+(7, 'uploadimage/MIUI06.jpg', 'final title updated', 'this is for the code to final test for lin yinan the computer and then to test --- for updated check', '', ''),
+(12, 'uploadimage/transportion.png', 'What contribution does transportation mode make to', 'Transportation is a significant contributor to greenhouse gas emissions, primarily through the burning of fossil fuels. Eco-friendly transportation options, such as electric vehicles (EVs) and public transportation systems, help to reduce carbon emissions, thereby mitigating climate change.', '', 'transportation'),
+(13, 'uploadimage/transportionbus.jpg', 'Public Transportation', 'Although some buses and other public transportation have raised concerns in the past, using these modes of transportation still may help out the environment. Public transportation typically follows the same model as carpooling. It could be beneficial to leave your car home sometimes and take the bus. ', '', 'transportation'),
+(14, 'uploadimage/CO2 .png', 'Why eco-Energy ?', 'Still in 2012, the main source of electric energy is produced by burning fossil fuels.There is a movement encouraging their replacement with less polluting alternatives such as with renewable energy sources.', '', 'energy'),
+(15, 'uploadimage/CO2.png', 'tese none function', 'nothing', '', ''),
+(16, 'uploadimage/Diet.jpg', 'Diet for earth', 'Plant-based diets rely on locally-sourced and seasonal produce, which can have a lower environmental impact.', '', 'diet');
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 表的结构 `user`
 --
 
 CREATE TABLE `user` (
@@ -157,7 +171,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `pwd`, `email`, `contactno`, `commute`, `energy`, `diet`, `admin`) VALUES
@@ -168,11 +182,11 @@ INSERT INTO `user` (`id`, `username`, `pwd`, `email`, `contactno`, `commute`, `e
 (5, 'user', 'justin', 'justinleeontheclock@gmail.com', '0123456789', 'personal', 'electricity', 'mixed', 0);
 
 --
--- Indexes for dumped tables
+-- 转储表的索引
 --
 
 --
--- Indexes for table `activity_responses`
+-- 表的索引 `activity_responses`
 --
 ALTER TABLE `activity_responses`
   ADD PRIMARY KEY (`id`);
@@ -202,11 +216,11 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `activity_responses`
+-- 使用表AUTO_INCREMENT `activity_responses`
 --
 ALTER TABLE `activity_responses`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
@@ -230,7 +244,13 @@ ALTER TABLE `uploadcontent`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- 使用表AUTO_INCREMENT `uploadcontent`
+--
+ALTER TABLE `uploadcontent`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
