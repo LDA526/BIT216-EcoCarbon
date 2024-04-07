@@ -98,7 +98,8 @@ require_once 'includes/config_session.inc.php';
                             <option value="transportation" name="transportation">transportation</option>
                             <option value="energy" name="energy">energy</option>
                             <option value="diet" name="diet">diet</option>
-                            
+                            <option value="wastemanagement">Waste Management</option>
+                            <option value="miscellaneous">Miscellaneous</option>
                           </select>
                         </div>
 

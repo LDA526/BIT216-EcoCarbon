@@ -164,7 +164,8 @@ $user = $result->fetch_assoc();
                       <option value="transportation">Transportation</option>
                       <option value="energy">Energy</option>
                       <option value="diet">Diet</option>
-                      
+                      <option value="wastemanagement">Waste Management</option>
+                      <option value="miscellaneous">Miscellaneous</option>
                     </select>
                     <br>
                     <button type="submit" class="btn btn-primary m-1" name="upload">Go</button><br>
