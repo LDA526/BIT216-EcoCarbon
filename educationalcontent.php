@@ -54,7 +54,16 @@ $user = $result->fetch_assoc();
         />
         <link rel="stylesheet" href="style.css" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+        <style>
+          .video-thumbnail {
+              width: 200px;
+              height: 150px;
+              margin: 10px;
+          }
+        </style>
     </head>
 
     <?php
@@ -155,6 +164,7 @@ $user = $result->fetch_assoc();
                       <option value="transportation">Transportation</option>
                       <option value="energy">Energy</option>
                       <option value="diet">Diet</option>
+                      
                     </select>
                     <br>
                     <button type="submit" class="btn btn-primary m-1" name="upload">Go</button><br>

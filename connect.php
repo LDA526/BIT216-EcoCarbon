@@ -5,6 +5,11 @@ include 'config.php';
 
 if (isset($_POST['upload'])) {
     $image = $_FILES['ulimage'];
+    $img_size = $_FILES['ulimage']['size'];
+    if ($img_size > 4 * 1024 * 1024) {
+        echo "<script>alert('File size exceeds maximum limit of 250 bytes.'); window.location='addcontent.php';</script>";
+        exit;
+    }
     print_r($_FILES['ulimage']);
     $img_loc = $_FILES['ulimage']['tmp_name'];
     $img_name = $_FILES['ulimage']['name'];
@@ -14,6 +19,8 @@ if (isset($_POST['upload'])) {
     $uldescription = mysqli_real_escape_string($con, $_POST['uldescription']);
     $ulurl = mysqli_real_escape_string($con, $_POST['ulurl']);
     $category = mysqli_real_escape_string($con, $_POST['category']);
+
+    $extension = pathinfo($img_name, PATHINFO_EXTENSION);
 
     //inseret data
     mysqli_query($con,"INSERT INTO `uploadcontent`(`Image`, `Title`, `Description`, `URL`, `Category`) VALUES ('$img_des','$ultitle','$uldescription','$ulurl','$category')");

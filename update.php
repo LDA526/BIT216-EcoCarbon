@@ -55,16 +55,16 @@
 
                         <div class="mb-3">
                           <label for="" >Title</label>
-                          <input type="text" class="form-control" value="<?php echo $data['Title'] ?>" name="ultitle" placeholder="What's the title?" required>
+                          <input type="text" class="form-control" value="<?php echo $data['Title'] ?>" name="ultitle" placeholder="What's the title?" required maxlength="50">
                         </div>
 
                         <div class="mb-3">
                           <label for="" >Description</label>
-                          <input type="text" class="form-control" value="<?php echo $data['Description'] ?>" name="uldescription" placeholder="Some description?" required>
+                          <input type="text" class="form-control" value="<?php echo $data['Description'] ?>" name="uldescription" placeholder="Some description?" required maxlength="500">
                         </div>
 
                         <div class="mb-3">
-                          <label for="ulurl" >Video URL</label>
+                          <label for="ulurl" >URL</label>
                           <input type="url" class="form-control" value="<?php echo $data['URL'] ?>" name="ulurl" placeholder="Please upload the link here" >
                         </div>
 
@@ -75,6 +75,7 @@
                             <option value="transportation" name="transportation">transportation</option>
                             <option value="energy" name="energy">energy</option>
                             <option value="diet" name="diet">diet</option>
+                            
                           </select>
                         </div>
 
@@ -85,7 +86,23 @@
     </div>
 
     <!--Update code-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('input[name="ulimage"]').addEventListener("change", function () {
+                var filename = this.value.split('\\').pop();
+                var fileSize = this.files[0].size; 
+                var maxSize = 4.5 * 1024 * 1024; 
 
+                if (filename.length > 250) {
+                    alert("File name exceeds maximum length of 250 characters.");
+                    this.value = ""; 
+                } else if (fileSize > maxSize) {
+                    alert("File size exceeds maximum limit of 4MB bytes.");
+                    this.value = ""; 
+                }
+            });
+        });
+    </script>
 
 
   </body>
