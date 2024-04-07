@@ -128,6 +128,12 @@ $user = $result->fetch_assoc();
                     </p>
                   </span>
                 </div>
+                
+                <?php if ($user && $user["admin"] == 1)
+                    echo "<a href=\"addcontent.php\" class=\"btn btn-primary\">Add Content Here!</a>";
+                else
+                    echo "<p>You are not an admin and are not allowed to edit content.</p>";
+                ?>
 
                 <div class="education-content-webaddress">
                   <h5>More Infomation please click the picture</h5>

@@ -2,10 +2,11 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- 主机： 127.0.0.1
--- 生成日期： 2024-04-07 09:25:58
--- 服务器版本： 10.4.32-MariaDB
--- PHP 版本： 8.2.12
+
+-- Host: 127.0.0.1
+-- Generation Time: Apr 07, 2024 at 06:05 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,10 +44,11 @@ CREATE TABLE `activity_responses` (
 --
 
 INSERT INTO `activity_responses` (`id`, `user_id`, `activity_date`, `rating1`, `rating2`, `rating3`, `rating4`, `rating5`) VALUES
-(4, 2, '2024-03-06', '4', '1', '1', '1', '1'),
-(6, 2, '2024-02-02', '2', '4', '1', '1', '1'),
-(10, 11, '2024-03-10', '1', '1', '1', '1', '1'),
-(11, 11, '2024-03-11', '2', '4', '5', '2', '1');
+(1, 1, '2024-03-06', '4', '1', '1', '1', '1'),
+(2, 2, '2024-03-11', '2', '4', '5', '2', '1'),
+(3, 2, '2024-03-13', '5', '4', '2', '1', '3'),
+(4, 4, '2024-03-13', '5', '2', '3', '4', '1'),
+(5, 4, '2024-04-07', '3', '4', '5', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -55,6 +57,7 @@ INSERT INTO `activity_responses` (`id`, `user_id`, `activity_date`, `rating1`, `
 --
 
 CREATE TABLE `friends` (
+  `id` int(11) NOT NULL,
   `userID` int(5) NOT NULL,
   `friendID` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -63,19 +66,36 @@ CREATE TABLE `friends` (
 -- 转存表中的数据 `friends`
 --
 
-INSERT INTO `friends` (`userID`, `friendID`) VALUES
-(1, 2);
+INSERT INTO `friends` (`id`, `userID`, `friendID`) VALUES
+(1, 1, 12),
+(2, 12, 1),
+(3, 12, 2),
+(4, 2, 12);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `submittedanswer`
+
+-- Table structure for table `messages`
 --
 
-CREATE TABLE `submittedanswer` (
-  `Date` date NOT NULL,
-  `Answer` varchar(50) NOT NULL
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `incoming_msg_id` int(11) NOT NULL,
+  `outgoing_msg_id` int(11) NOT NULL,
+  `msg` varchar(1000) NOT NULL,
+  `last` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `incoming_msg_id`, `outgoing_msg_id`, `msg`, `last`) VALUES
+(1, 12, 1, 'Transportation : 3/5 \nEnergy Usage : 4/5 \nDiet : 5/5 \nWaste Management : 2/5 \nMisc : 1/5', 0),
+(2, 1, 12, 'Transportation : 4/5 \nEnergy Usage : 1/5 \nDiet : 1/5 \nWaste Management : 1/5 \nMisc : 1/5', 1),
+(3, 12, 2, 'Hi!', 0),
+(4, 2, 12, 'Hello to you too!', 1);
 
 -- --------------------------------------------------------
 
@@ -105,6 +125,7 @@ INSERT INTO `updates` (`userID`, `date`, `category`, `value`) VALUES
 --
 
 CREATE TABLE `uploadcontent` (
+
   `id` int(11) NOT NULL,
   `Image` varchar(1024) NOT NULL,
   `Title` varchar(50) NOT NULL,
@@ -117,6 +138,7 @@ CREATE TABLE `uploadcontent` (
 -- 转存表中的数据 `uploadcontent`
 --
 
+
 INSERT INTO `uploadcontent` (`id`, `Image`, `Title`, `Description`, `URL`, `Category`) VALUES
 (1, '屏幕截图 2024-03-08 202801.png', 'test1', 'this is the first test and post the image file it\'s successfully?', '', ''),
 (3, 'uploadimage/Default.jpg', 'test 3 update', 'this one is upload and after i willl update-----update already will display it or not?', '', ''),
@@ -128,6 +150,7 @@ INSERT INTO `uploadcontent` (`id`, `Image`, `Title`, `Description`, `URL`, `Cate
 (14, 'uploadimage/CO2 .png', 'Why eco-Energy ?', 'Still in 2012, the main source of electric energy is produced by burning fossil fuels.There is a movement encouraging their replacement with less polluting alternatives such as with renewable energy sources.', '', 'energy'),
 (15, 'uploadimage/CO2.png', 'tese none function', 'nothing', '', ''),
 (16, 'uploadimage/Diet.jpg', 'Diet for earth', 'Plant-based diets rely on locally-sourced and seasonal produce, which can have a lower environmental impact.', '', 'diet');
+
 
 -- --------------------------------------------------------
 
@@ -155,8 +178,8 @@ INSERT INTO `user` (`id`, `username`, `pwd`, `email`, `contactno`, `commute`, `e
 (1, 'Passport', '123', 'PassportPioneer@gmail.com', '123453232', '', '', '', 1),
 (2, 'Journey', '123', 'JourneyQuester@gmail.com', '12789657', '', '', '', 0),
 (3, 'Vagabond', '123', 'VagabondVentures@gmail.com', '125678542', '', '', '', 0),
-(11, 'test', 'pwd12345', 'justinleeontheclock@gmail.com', '0147326532', 'public', 'electricity', 'vegan', 0),
-(12, 'undercover', 'default', 'dikaunlee@gmail.com', '67141424214', 'personal', 'electricity', 'vegetarian', 0);
+(4, 'undercover', '123', 'dikaunlee@gmail.com', '67141424214', 'personal', 'electricity', 'vegetarian', 1),
+(5, 'user', 'justin', 'justinleeontheclock@gmail.com', '0123456789', 'personal', 'electricity', 'mixed', 0);
 
 --
 -- 转储表的索引
@@ -169,13 +192,25 @@ ALTER TABLE `activity_responses`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `uploadcontent`
+-- Indexes for table `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uploadcontent`
 --
 ALTER TABLE `uploadcontent`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
@@ -188,7 +223,25 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `activity_responses`
 --
 ALTER TABLE `activity_responses`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `uploadcontent`
+--
+ALTER TABLE `uploadcontent`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用表AUTO_INCREMENT `uploadcontent`
@@ -200,7 +253,7 @@ ALTER TABLE `uploadcontent`
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
