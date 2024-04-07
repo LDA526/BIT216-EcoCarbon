@@ -137,11 +137,11 @@ include 'includes/headers/header_merchant.inc.php';
         <thead>
             <tr>
                 <th>Activity Date</th>
-                <th>Question 1</th>
-                <th>Question 2</th>
-                <th>Question 3</th>
-                <th>Question 4</th>
-                <th>Question 5</th>
+                <th>Transportation</th>
+                <th>Energy Usage</th>
+                <th>Diet</th>
+                <th>Waste Management</th>
+                <th>Miscellaneous</th>
             </tr>
         </thead>
         <tbody>
@@ -159,6 +159,13 @@ include 'includes/headers/header_merchant.inc.php';
     </table>
     <button>Recommendation</button>
 </div>
+
+<style>
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+</style>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

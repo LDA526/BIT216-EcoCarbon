@@ -171,9 +171,9 @@ $totalRating = $carbonData[0]['rating1'] + $carbonData[0]['rating2'] + $carbonDa
 
 <!-- Message for rating4 -->
 <?php if ($carbonData[0]['rating4'] <= 2): ?>
-        <div class="message">For your "Question 4 : Waste Managment" your rating is below average. Well done and compost more for a better environment!</div>
+        <div class="message">For your "Question 4 : Waste Management" your rating is below average. Well done and compost more for a better environment!</div>
     <?php elseif ($carbonData[0]['rating4'] >= 3): ?>
-        <div class="message">For your "Question 4 : Waste Managment" your rating is above average. You can try to order or cook lesser food to decrease food waste in your household!</div>
+        <div class="message">For your "Question 4 : Waste Management" your rating is above average. You can try to order or cook lesser food to decrease food waste in your household!</div>
     <?php endif; ?>
 
 <!-- Message for rating5 -->
@@ -195,7 +195,7 @@ $totalRating = $carbonData[0]['rating1'] + $carbonData[0]['rating2'] + $carbonDa
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'],
+            labels: ['Transportation', 'Energy Usage', 'Diet', 'Waste Management', 'Miscellaneous'],
             datasets: [{
                 label: 'Rating',
                 data: [
