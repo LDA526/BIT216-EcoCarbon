@@ -72,9 +72,11 @@
                           <label for="" >Category</label>
                           <select name="category" class="form-control" required>
                             <option value="" disabled selected hidden >Please select one category here</option>
-                            <option value="transportation" name="transportation">transportation</option>
-                            <option value="energy" name="energy">energy</option>
-                            <option value="diet" name="diet">diet</option>
+                            <option value="transportation" name="transportation">Transportation</option>
+                            <option value="energy" name="energy">Energy Usage</option>
+                            <option value="diet" name="diet">Diet</option>
+                            <option value="waste" name="waste">Waste Management</option>
+                            <option value="miscellaneous" name="miscellaneous">Miscellaneous</option>
                             
                           </select>
                         </div>
