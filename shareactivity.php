@@ -47,7 +47,8 @@ $result = $stmt->get_result();
 $activity = $result->fetch_assoc();
 
 if (isset($_GET["friend"])) {
-    $msg = "Transportation : ". $activity["rating1"] ."/5 \n" .
+    $msg = " Date: ". $date ." \n" .  
+    "Transportation : ". $activity["rating1"] ."/5 \n" .
     "Energy Usage : ". $activity["rating2"] ."/5 \n" .
     "Diet : ". $activity["rating3"] ."/5 \n" .
     "Waste Management : ". $activity["rating4"] ."/5 \n" .
