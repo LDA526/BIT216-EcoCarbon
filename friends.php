@@ -90,7 +90,7 @@ if (isset($_GET["newfriend"])) {
         
 
             <div class="col-md-8 pt-5">
-                <h2>Friends </h2>
+                <h2>Friends</h2>
                 
                 <div class="content" style="display:inline-block;">
                     <?php 
@@ -123,15 +123,15 @@ if (isset($_GET["newfriend"])) {
                                     </div> <br>";
                             }
                         } else {
-                            echo "No friends added.";
+                            echo "<h4 style=\"padding:5px;\">No friends added.</h4>";
                         }
 
 
                     ?>
                 
                 </div>
-
-                <h2>Add Friend</h2>
+                <hr>
+                <h3>Add Friend</h3>
                 
                 <div class="content" style="display:inline-block;">
                     <form>
