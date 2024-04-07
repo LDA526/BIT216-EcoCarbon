@@ -33,13 +33,12 @@ if ($user["admin"] == 1) {
 }
 
 if (isset($_GET["newfriend"])) {
-    $query = "SELECT * FROM user WHERE username = ?";
+    $query = "SELECT * FROM user WHERE username = :username";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $_GET["newfriend"]);
+    $stmt->bindParam(":username", $_GET["newfriend"]);
     $stmt->execute();
 
-    $result = $stmt->get_result();
-    $newfriend = $result->fetch_assoc();
+    $newfriend = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -106,7 +105,6 @@ if (isset($_GET["newfriend"])) {
                         $stmt->execute();
                         $result = $stmt->get_result();
                         $row = $result->fetch_all();
-                        // var_dump($row);
 
                         if ($row) {
                             foreach ($row as $r) {

@@ -116,6 +116,7 @@ $conn->close();
                             type="password"
                             class="form-control form-control-lg"
                             name="newpwd"
+                            required
                             >
                             </input>
                         </h4>
