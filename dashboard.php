@@ -47,6 +47,7 @@ if ($resultLine->num_rows > 0) {
     }
 }
 
+
 $query = "SELECT * FROM user WHERE username = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $_SESSION["user_username"]);
@@ -61,6 +62,9 @@ if ($user["admin"] == 1) {
 }else {
     $admin = "educationalcontent.php";
 }
+
+$date = date("Y-m-d");
+
 
 
 // Close the database connection
@@ -111,8 +115,8 @@ $conn->close();
                 <hr class="my-3">
                 <a href="activityques.php">Add Activity</a>
                 <a href="profile.php">Profile</a>
-                <a  href="searchhistory.php">History</a>
-                <a>Friends</a>
+                <a href="searchhistory.php">History</a>
+                <a href="friends.php">Friends</a>
                 <a href = "Recommendation.php">Recommendation</a>
                 <a href = "<?php echo $admin; ?>">Education Content</a>
 
@@ -132,7 +136,10 @@ $conn->close();
                         <canvas id="dashPieChart"></canvas>
                     </div>
                     <br>
-                    <button id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;">Add Carbon Data</button>
+                    <a id="addCDataBtn" class="btn btn-primary" style="background-color: #15790D;" href="activityques.php">Add Carbon Data</a>
+                    <a id="shareBtn" class="btn btn-primary" style="background-color: #15790D; margin-top: 5px;" href="shareactivity.php?date=<?php echo $date ?>">Share Daily Carbon Data</a>
+                </div>
+                <div class="col p-5">
                 </div>
                 <div class="col p-5">
                     <!-- Create a canvas element for the line chart -->
