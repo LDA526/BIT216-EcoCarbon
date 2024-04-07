@@ -50,7 +50,7 @@
 
                         <div class="mb-3">
                           <label for="" >Upload Image</label>
-                          <td><input type="file" class="form-control"  name="ulimage" accept="image/*,video/*" value="<?php echo $data['Image'] ?>" required><img src="<?php echo $data['Image'] ?>" width ='200px' height = '120px'></td>
+                          <td><input type="file" class="form-control"  name="ulimage" accept="image/*,video/*" value="<?php echo $data['Image'] ?>"><img src="<?php echo $data['Image'] ?>" width ='200px' height = '120px'></td>
                         </div>
 
                         <div class="mb-3">

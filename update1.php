@@ -15,9 +15,12 @@ if (isset($_POST['update'])) {
   $ulurl = $_POST['ulurl'];
   $category = $_POST['category'];
 }
-
+if ($_FILES['ulimage']['name']) {
   mysqli_query($con,"UPDATE `uploadcontent` SET `Image`='$img_des',`Title`='$ultitle',`Description`='$uldescription',`URL`='$ulurl',`Category`='$category' WHERE Id = $ID");
   header("location: addcontent.php");
-
+} else {
+  mysqli_query($con,"UPDATE `uploadcontent` SET `Title`='$ultitle',`Description`='$uldescription',`URL`='$ulurl',`Category`='$category' WHERE Id = $ID");
+  header("location: addcontent.php");
+}
   
 ?>
